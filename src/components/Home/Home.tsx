@@ -13,6 +13,9 @@ const Home = () => {
     'cards',
     getAllCards
   );
+
+  const handleAddToDeck = (clickedCard: MtgCards) => {};
+
   if (isLoading) return <LinearIndeterminate />;
   if (error) return <p>Error fetching data</p>;
   return (
@@ -22,7 +25,7 @@ const Home = () => {
         <Grid container spacing={3}>
           {data?.map((card) => (
             <Grid item key={card.id} xs={12} sm={4}>
-              <Card card={card} />
+              <Card card={card} handleAddToDeck={handleAddToDeck} />
             </Grid>
           ))}
         </Grid>

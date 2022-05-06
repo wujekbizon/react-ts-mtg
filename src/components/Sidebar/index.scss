@@ -5,4 +5,66 @@
   position: absolute;
   top: 0;
   z-index: 3;
+
+  nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    a {
+      font-size: 35px;
+      margin: 0px 20px;
+
+      &:hover {
+        color: #ee5a24;
+
+        svg {
+          opacity: 0;
+
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:after {
+        content: '';
+        font-size: 15px;
+        letter-spacing: 2px;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+
+        // -webkit-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+      }
+
+      &:first-child {
+        &:after {
+          content: 'HOME';
+        }
+      }
+    }
+
+    a.search-link {
+      &:after {
+        content: 'SEARCH';
+      }
+    }
+
+    a.deck-link {
+      &:after {
+        content: 'DECK';
+      }
+    }
+
+    a.active {
+      svg {
+        color: #ee5a24;
+      }
+    }
+  }
 }

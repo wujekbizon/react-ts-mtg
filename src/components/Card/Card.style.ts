@@ -5,9 +5,17 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  border: 1px solid lightblue;
+  border: 1px solid #1e272e;
   border-radius: 20px;
   height: 100%;
+
+  .button {
+    background-color: #ee5a24;
+    color: #1e272e;
+    border-radius: 0px 0px 20px 20px;
+    opacity: 0;
+    animation: fadeInUp 1s 1s forwards;
+  }
 
   img {
     max-height: 260px;
