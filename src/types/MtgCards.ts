@@ -1,0 +1,27 @@
+export type MtgCards = {
+  artist: string;
+  cmc: number;
+  colorIdentity: string[];
+  colors: string[];
+  foreignNames: any;
+  id: string;
+  imageUrl: string;
+  layout: string;
+  manaCost: string;
+  multiverseid: string;
+  name: string;
+  number: string;
+  originalText: string;
+  originalType: string;
+  power: string;
+  printings: string[];
+  rarity: string;
+  set: string;
+  setName: string;
+  subtypes: string[];
+  text: string;
+  toughness: string;
+  type: string;
+  types: string[];
+  // variations: string[];
+};
