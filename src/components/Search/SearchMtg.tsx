@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import LinearIndeterminate from '../../LinearIndeterminate';
+import Loader from 'react-loaders';
 import { Card } from '../Card/Card';
 // Types
 import { MtgCards } from '../../types/MtgCards';
@@ -16,7 +16,7 @@ const SearchMtg = () => {
 
   const handleAddToDeck = (clickedCard: MtgCards) => {};
 
-  if (isLoading) return <LinearIndeterminate />;
+  if (isLoading) return <Loader type="pacman" active />;
   if (error) return <p>Error fetching data</p>;
   return (
     <div id="wrapper">
@@ -24,7 +24,7 @@ const SearchMtg = () => {
       {status === 'success' && (
         <Grid container spacing={3}>
           {data?.map((card) => (
-            <Grid item key={card.id} xs={12} sm={4}>
+            <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
               <Card card={card} handleAddToDeck={handleAddToDeck} />
             </Grid>
           ))}
