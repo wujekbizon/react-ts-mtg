@@ -12,7 +12,9 @@ export const Card: React.FC<Props> = ({ card, handleAddToDeck }) => (
       <h3>
         {card.name} - {card.setName}
       </h3>
-      <img src={card.imageUrl} alt={card.name} />
+      <div>
+        <img src={card.imageUrl} alt={card.name} />
+      </div>
     </div>
     <Button
       className="button"

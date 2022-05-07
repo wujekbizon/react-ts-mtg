@@ -35,15 +35,11 @@ const Sidebar = () => {
         <NavLink
           onClick={() => closeMenu()}
           className="search-link"
-          to="/builddeck"
+          to="/search"
         >
           <FontAwesomeIcon icon={faHatWizard} color="#4d4d4e" />
         </NavLink>
-        <NavLink
-          onClick={() => closeMenu()}
-          className="deck-link"
-          to="/contact"
-        >
+        <NavLink onClick={() => closeMenu()} className="deck-link" to="/deck">
           <FontAwesomeIcon icon={faBookDead} color="#4d4d4e" />
         </NavLink>
       </nav>

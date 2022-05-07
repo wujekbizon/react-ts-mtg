@@ -18,7 +18,8 @@ export const Wrapper = styled.div`
   }
 
   img {
-    max-height: 260px;
+    height: 80%;
+    width: 100%;
     object-fit: contain;
     border-radius: 15px 15px 10px 10px;
   }
