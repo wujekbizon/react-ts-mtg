@@ -1,3 +1,129 @@
 img {
-  width: 150px;
+  width: 120px;
+}
+
+.mountain {
+  position: absolute;
+  left: 40%;
+  bottom: 15%;
+  opacity: 0;
+  animation: fadeInBottomLeft 1s 1.6s forwards;
+}
+
+.forest {
+  position: absolute;
+  left: 33%;
+  top: 45%;
+  opacity: 0;
+  animation: fadeInLeft 1s 1.8s forwards;
+}
+
+.plains {
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  opacity: 0;
+  animation: fadeInDown 1s 1s forwards;
+}
+
+.island {
+  position: absolute;
+  left: 66%;
+  top: 45%;
+  opacity: 0;
+  animation: fadeInRight 1s 1.2s forwards;
+}
+
+.swamp {
+  position: absolute;
+  left: 60%;
+  bottom: 15%;
+  opacity: 0;
+  animation: fadeInBottomRight 1s 1.4s forwards;
+}
+
+@media (max-width: 1240px) {
+  img {
+    width: 90px;
+  }
+
+  .mountain {
+    bottom: 25%;
+  }
+
+  .plains {
+    top: 27.5%;
+  }
+
+  .swamp {
+    bottom: 25%;
+  }
+}
+
+@media (max-width: 960px) {
+  img {
+    width: 70px;
+  }
+
+  .mountain {
+    left: 42.5%;
+    bottom: 35%;
+  }
+
+  .plains {
+    top: 32.5%;
+  }
+
+  .swamp {
+    left: 58.5%;
+    bottom: 35%;
+  }
+
+  .island {
+    left: 62%;
+  }
+
+  .forest {
+    left: 38%;
+  }
+}
+
+@media (max-width: 720px) {
+  img {
+    width: 40px;
+  }
+
+  .plains {
+    position: absolute;
+    left: 5%;
+    top: 40%;
+    animation: fadeInDown 1s 1s forwards;
+  }
+
+  .island {
+    position: absolute;
+    left: 5%;
+    top: 45%;
+    animation: fadeInLeft 1s 1.2s forwards;
+  }
+  .forest {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    animation: fadeInLeft 1s 1.4s forwards;
+  }
+
+  .swamp {
+    position: absolute;
+    left: 5%;
+    top: 55%;
+    animation: fadeInLeft 1s 1.6s forwards;
+  }
+
+  .mountain {
+    position: absolute;
+    left: 5%;
+    top: 60%;
+    animation: fadeInUp 1s 1.8s forwards;
+  }
 }

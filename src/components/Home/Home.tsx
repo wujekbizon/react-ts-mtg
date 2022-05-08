@@ -8,13 +8,22 @@ import Plains from '../../assets/images/Plains.png';
 
 const Home = () => {
   return (
-    <div>
-      <h1>MAGIC THE GATHERING</h1>
-      <img className="mountain" src={Mountain} />
-      <img className="swamp" src={Swamp} />
-      <img className="forest" src={Forest} />
-      <img className="island" src={Island} />
-      <img className="plains" src={Plains} />
+    <div className="mana">
+      <div className="mountain">
+        <img src={Mountain} alt="Mountain" />
+      </div>
+      <div className="swamp">
+        <img src={Swamp} alt="Swamp" />
+      </div>
+      <div className="forest">
+        <img src={Forest} alt="Forest" />
+      </div>
+      <div className="island">
+        <img src={Island} alt="Island" />
+      </div>
+      <div className="plains">
+        <img src={Plains} alt="Plains" />
+      </div>
     </div>
   );
 };
