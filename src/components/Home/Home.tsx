@@ -43,8 +43,34 @@ const Home = () => {
     wait();
   }, []);
 
+  const [isActiveForest, setActiveForest] = useState(false);
+  const [isActiveIsland, setActiveIsland] = useState(false);
+  const [isActiveMountain, setActiveMountain] = useState(false);
+  const [isActiveSwamp, setActiveSwamp] = useState(false);
+  const [isActivePlains, setActivePlains] = useState(false);
+
+  const handleToggleForest = () => {
+    setActiveForest(!isActiveForest);
+  };
+
+  const handleToggleIsland = () => {
+    setActiveIsland(!isActiveIsland);
+  };
+
+  const handleToggleMountain = () => {
+    setActiveMountain(!isActiveMountain);
+  };
+
+  const handleToggleSwamp = () => {
+    setActiveSwamp(!isActiveSwamp);
+  };
+
+  const handleTogglePlains = () => {
+    setActivePlains(!isActivePlains);
+  };
+
   return (
-    <div className="container home-page">
+    <div className="home-page">
       <div className="text-zone">
         <h1>
           <AnimatedLetters
@@ -55,24 +81,45 @@ const Home = () => {
         </h1>
       </div>
 
-      <div className="logo">
-        <img className="black" src={LogoB} alt="Logo" />
-        <img className="fire" src={MtgLogo} alt="MTG" />
-      </div>
-      <div className="mountain">
-        <img src={Mountain} alt="Mountain" />
-      </div>
-      <div className="swamp">
-        <img src={Swamp} alt="Swamp" />
-      </div>
-      <div className="forest">
-        <img src={Forest} alt="Forest" />
-      </div>
-      <div className="island">
-        <img src={Island} alt="Island" />
-      </div>
-      <div className="plains">
-        <img src={Plains} alt="Plains" />
+      <div className="container">
+        <div>
+          <img className="black-logo" src={LogoB} alt="Logo" />
+        </div>
+        <div>
+          <img className="fire-logo" src={MtgLogo} alt="MTG" />
+        </div>
+        <div
+          className={
+            isActiveMountain ? ' mountain mountain-animate ' : 'mountain'
+          }
+          onClick={handleToggleMountain}
+        >
+          <img src={Mountain} alt="Mountain" />
+        </div>
+        <div
+          className={isActiveSwamp ? 'swamp swamp-animate' : 'swamp'}
+          onClick={handleToggleSwamp}
+        >
+          <img src={Swamp} alt="Swamp" />
+        </div>
+        <div
+          className={isActiveForest ? 'forest forest-animate' : 'forest'}
+          onClick={handleToggleForest}
+        >
+          <img src={Forest} alt="Forest" />
+        </div>
+        <div
+          className={isActiveIsland ? 'island island-animate' : 'island'}
+          onClick={handleToggleIsland}
+        >
+          <img src={Island} alt="Island" />
+        </div>
+        <div
+          className={isActivePlains ? 'plains plains-animate' : 'plains'}
+          onClick={handleTogglePlains}
+        >
+          <img src={Plains} alt="Plains" />
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,24 @@
+#search-bar {
+  margin-top: 250px;
+  margin-bottom: 30px;
+  width: 50%;
+}
+
+.ui .segment {
+  border-radius: 10px;
+  background: black;
+  // border: 1px solid #ee5a24;
+  box-shadow: 0 0 20px 0 #ee5a24;
+  opacity: 0;
+  animation: fadeIn 2.5s 3s forwards;
+
+  label {
+    color: #ee5a24 !important;
+    font-size: 15px !important;
+  }
+
+  input {
+    font-size: 15px !important;
+    background: aliceblue !important;
+  }
+}

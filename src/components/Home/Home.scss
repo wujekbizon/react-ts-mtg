@@ -1,19 +1,36 @@
-// .container {
-//   width: 100%;
-//   will-change: contents;
-//   height: 90%;
-//   min-height: 566px;
-//   position: absolute;
-//   opacity: 1;
-//   top: 5%;
-//   margin: 0 auto;
-//   z-index: 1;
-//   transform-style: preserve-3d;
-//   animation: fadeIn 1s forwards;
-//   animation-delay: 1s;
-// }
-
 .home-page {
+  // .container {
+  //   display: block;
+  //   border: 1px solid #fff;
+  //   width: 450px;
+  //   height: 500px;
+  // }
+
+  .forest-animate img {
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(0, 148, 50, 1);
+  }
+
+  .island-animate img {
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(10, 189, 227, 1);
+  }
+
+  .mountain-animate img {
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(234, 32, 39, 1);
+  }
+
+  .swamp-animate img {
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 1);
+  }
+
+  .plains-animate img {
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(245, 246, 250, 1);
+  }
+
   .text-zone {
     position: absolute;
     left: 12%;
@@ -23,24 +40,22 @@
     max-height: 90%;
   }
 
-  .black {
+  .black-logo {
     width: 210px;
-    position: absolute;
-    left: 47%;
+    position: fixed;
+    left: 47.15%;
     top: 45%;
     opacity: 0;
-    animation: fadeIn 4s 2s;
-    z-index: 1;
+    animation: fadeIn 4s 2s forwards;
   }
 
-  .fire {
+  .fire-logo {
     width: 260px;
     position: absolute;
-    left: 45.85%;
+    left: 46%;
     top: 38.9%;
-    z-index: 3;
     opacity: 0;
-    animation: fadeInUp 2s 3s forwards;
+    animation: zoomIn 2s 3s forwards;
   }
 
   h1 {
@@ -122,7 +137,7 @@ img {
   img:hover {
     transform: rotateY(180deg);
     border-radius: 50%;
-    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 1);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
   }
 }
 
