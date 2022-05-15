@@ -4,20 +4,26 @@ import { Card } from '../Card/Card';
 import SearchBar from './SearchBar/SearchBar';
 import AnimatedLetters from '../AnimatedLetters/AnimatedLeters';
 import { useState, useEffect } from 'react';
+import { IconButton } from '@material-ui/core';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import { Badge } from '@material-ui/core/';
+import { Drawer } from '@material-ui/core';
 // Types
 import { MtgCards } from '../../types/MtgCards';
 import { Grid } from '@material-ui/core';
 import { getAllCards } from '../../FetchCards';
 // Styles
 import './SearchMtg.scss';
+import Collection from '../Collection/Collection';
 
 const SearchMtg = () => {
+  const [cartOpen, isCartOpen] = useState(false);
+  const [letterClass, setLetterClass] = useState('text-animate');
+
   const { data, isLoading, status, error } = useQuery<MtgCards[]>(
     'cards',
     getAllCards
   );
-
-  const [letterClass, setLetterClass] = useState('text-animate');
   const mtgArray = ['M', 'T', 'G', ' '];
   const searchArray = ['S', 'E', 'A', 'R', 'C', 'H'];
 
@@ -58,7 +64,14 @@ const SearchMtg = () => {
 
         <SearchBar />
       </div>
-
+      <Drawer anchor="right" open={cartOpen} onClose={() => isCartOpen(false)}>
+        <Collection />
+      </Drawer>
+      <IconButton className="icon-button" onClick={() => isCartOpen(true)}>
+        <Badge>
+          <CollectionsIcon fontSize="large" color="error" />
+        </Badge>
+      </IconButton>
       {status === 'success' && (
         <Grid container spacing={3}>
           {data?.map((card) => (
