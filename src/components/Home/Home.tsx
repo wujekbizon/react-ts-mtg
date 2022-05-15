@@ -89,33 +89,31 @@ const Home = () => {
           <img className="fire-logo" src={MtgLogo} alt="MTG" />
         </div>
         <div
-          className={
-            isActiveMountain ? ' mountain mountain-animate ' : 'mountain'
-          }
+          className={`mountain ${isActiveMountain ? 'mountain-animate' : ''} `}
           onClick={handleToggleMountain}
         >
           <img src={Mountain} alt="Mountain" />
         </div>
         <div
-          className={isActiveSwamp ? 'swamp swamp-animate' : 'swamp'}
+          className={`swamp ${isActiveSwamp ? 'swamp-animate' : ''}`}
           onClick={handleToggleSwamp}
         >
           <img src={Swamp} alt="Swamp" />
         </div>
         <div
-          className={isActiveForest ? 'forest forest-animate' : 'forest'}
+          className={`forest ${isActiveForest ? 'forest-animate' : ''}`}
           onClick={handleToggleForest}
         >
           <img src={Forest} alt="Forest" />
         </div>
         <div
-          className={isActiveIsland ? 'island island-animate' : 'island'}
+          className={`island ${isActiveIsland ? 'island-animate' : ''}`}
           onClick={handleToggleIsland}
         >
           <img src={Island} alt="Island" />
         </div>
         <div
-          className={isActivePlains ? 'plains plains-animate' : 'plains'}
+          className={`plains ${isActivePlains ? 'plains-animate' : ''}`}
           onClick={handleTogglePlains}
         >
           <img src={Plains} alt="Plains" />
