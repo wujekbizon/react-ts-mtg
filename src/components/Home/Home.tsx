@@ -83,10 +83,40 @@ const Home = () => {
 
       <div className="container">
         <div>
-          <img className="black-logo" src={LogoB} alt="Logo" />
+          <img
+            className={`
+          black-logo
+          ${
+            isActiveForest &&
+            isActiveIsland &&
+            isActiveMountain &&
+            isActivePlains &&
+            isActiveSwamp
+              ? 'active-black'
+              : ''
+          }
+          `}
+            src={LogoB}
+            alt="Logo"
+          />
         </div>
         <div>
-          <img className="fire-logo" src={MtgLogo} alt="MTG" />
+          <img
+            className={`
+          fire-logo
+          ${
+            isActiveForest &&
+            isActiveIsland &&
+            isActiveMountain &&
+            isActivePlains &&
+            isActiveSwamp
+              ? 'active-fire'
+              : ''
+          }
+          `}
+            src={MtgLogo}
+            alt="MTG"
+          />
         </div>
         <div
           className={`mountain ${isActiveMountain ? 'mountain-animate' : ''} `}
