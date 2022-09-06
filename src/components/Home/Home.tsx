@@ -12,6 +12,11 @@ import { useState, useEffect } from 'react';
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
+  const [isActiveForest, setActiveForest] = useState(false);
+  const [isActiveIsland, setActiveIsland] = useState(false);
+  const [isActiveMountain, setActiveMountain] = useState(false);
+  const [isActiveSwamp, setActiveSwamp] = useState(false);
+  const [isActivePlains, setActivePlains] = useState(false);
   const nameArray = [
     'M',
     'A',
@@ -42,12 +47,6 @@ const Home = () => {
     }
     wait();
   }, []);
-
-  const [isActiveForest, setActiveForest] = useState(false);
-  const [isActiveIsland, setActiveIsland] = useState(false);
-  const [isActiveMountain, setActiveMountain] = useState(false);
-  const [isActiveSwamp, setActiveSwamp] = useState(false);
-  const [isActivePlains, setActivePlains] = useState(false);
 
   const handleToggleForest = () => {
     setActiveForest(!isActiveForest);
