@@ -1,25 +1,19 @@
-import { useQuery } from 'react-query';
-import Loader from 'react-loaders';
-import { Card } from '../Card/Card';
-import SearchBar from './SearchBar/SearchBar';
-import AnimatedLetters from '../AnimatedLetters/AnimatedLeters';
+import './SearchMtg.scss';
 import { useState, useEffect } from 'react';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import Loader from 'react-loaders';
+import { Card, SearchBar, AnimatedLetters, Collection } from '../../components';
 import { IconButton } from '@mui/material';
 import CollectionsIcon from '@mui/material';
 import { Badge } from '@mui/material';
 import { Drawer } from '@mui/material';
-// Types
-import { MtgCards } from '../../types/MtgCards';
 import { Grid } from '@mui/material';
+import { MtgCards } from '../../types/MtgCards';
 import { getAllCards } from '../../FetchCards';
-// Styles
-import './SearchMtg.scss';
-import Collection from '../Collection/Collection';
-import axios from 'axios';
 
 const SearchMtg = () => {
   const [cartOpen, isCartOpen] = useState(false);
-  const [letterClass, setLetterClass] = useState('text-animate');
   const { data, isLoading, status, error } = useQuery<MtgCards[]>(
     'cards',
     getAllCards
@@ -27,18 +21,6 @@ const SearchMtg = () => {
   const [cardsData, setCardsData] = useState(data);
   const [page, setPage] = useState(1);
   const [color, setColor] = useState('red');
-
-  // const mtgArray = ['M', 'T', 'G', ' '];
-  // const searchArray = ['S', 'E', 'A', 'R', 'C', 'H'];
-
-  // useEffect(() => {
-  //   async function wait() {
-  //     return setTimeout(() => {
-  //       setLetterClass('text-animate-hover');
-  //     }, 4000);
-  //   }
-  //   wait();
-  // }, []);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -72,33 +54,15 @@ const SearchMtg = () => {
 
   const handleChange = (e: React.FormEvent<EventTarget>): void => {
     let target = e.target as HTMLInputElement;
+    setPage(1);
     setColor(target.value);
   };
 
   if (isLoading) return <Loader type="pacman" active />;
   if (error) return <p>Error fetching data</p>;
   return (
-    <div id="wrapper">
-      <div className="ui container text-zone" id="search-bar">
-        {/* <div id="mtg">
-          <h1>
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={mtgArray}
-              idx={3}
-            />
-          </h1>
-        </div>
-        <div id="search">
-          <h1>
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArray={searchArray}
-              idx={6}
-            />
-          </h1>
-        </div> */}
-
+    <main className="search">
+      <div className="text-zone">
         <SearchBar />
         <button onClick={prevPage}>Prev</button>
         <button onClick={nextPage}>Next</button>
@@ -114,9 +78,7 @@ const SearchMtg = () => {
         <Collection />
       </Drawer>
       <IconButton className="icon-button" onClick={() => isCartOpen(true)}>
-        <Badge>
-          {/* <CollectionsIcon fontSize="large" color="error" /> */}
-        </Badge>
+        <Badge></Badge>
       </IconButton>
 
       {status === 'success' && (
@@ -130,7 +92,7 @@ const SearchMtg = () => {
           })}
         </Grid>
       )}
-    </div>
+    </main>
   );
 };
 

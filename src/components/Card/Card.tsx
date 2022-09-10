@@ -7,7 +7,7 @@ type Props = {
   handleAddToDeck: (clickedCard: MtgCards) => void;
 };
 
-export const Card: React.FC<Props> = ({ card, handleAddToDeck }) => (
+const Card: React.FC<Props> = ({ card, handleAddToDeck }) => (
   <Wrapper>
     <div id="wrapper">
       <h3>
@@ -26,3 +26,5 @@ export const Card: React.FC<Props> = ({ card, handleAddToDeck }) => (
     </Button>
   </Wrapper>
 );
+
+export default Card;

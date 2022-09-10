@@ -1,21 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
-// Components
-import Layout from './components/Layout';
-import Home from './components/Home/Home';
-// Styles
 import './App.scss';
-import SearchMtg from './components/Search/SearchMtg';
-import DeckBuild from './components/Deck/DeckBuild';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import SearchMtg from './pages/Search/SearchMtg';
+import DeckBuild from './pages/Deck/DeckBuild';
+import { Sidebar } from './components';
 
 const App = () => {
   return (
     <>
+      <Sidebar />
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/search" element={<SearchMtg />} />
-          <Route path="/deck" element={<DeckBuild />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchMtg />} />
+        <Route path="/deck" element={<DeckBuild />} />
       </Routes>
     </>
   );

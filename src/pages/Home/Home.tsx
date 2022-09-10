@@ -7,7 +7,7 @@ import Island from '../../assets/images/Island.png';
 import Plains from '../../assets/images/Plains.png';
 import LogoB from '../../assets/images/LogoB.png';
 import MtgLogo from '../../assets/images/MtgLogo.png';
-import AnimatedLetters from '../AnimatedLetters/AnimatedLeters';
+import AnimatedLetters from '../../components/AnimatedLetters/AnimatedLeters';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
@@ -69,7 +69,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-page">
+    <main className="home">
       <div className="text-zone">
         <h1>
           <AnimatedLetters
@@ -148,7 +148,7 @@ const Home = () => {
           <img src={Plains} alt="Plains" />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
