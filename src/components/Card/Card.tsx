@@ -10,19 +10,19 @@ type Props = {
 const Card: React.FC<Props> = ({ card, handleAddToDeck }) => (
   <Wrapper>
     <div id="wrapper">
-      <h3>
+      {/* <h3>
         {card.name} - {card.set_name}
-      </h3>
+      </h3> */}
       <div>
-        <img src={card.image_uris?.large} alt={card.name} />
+        <img src={card.image_uris?.border_crop} alt={card.name} />
       </div>
     </div>
     <Button
       className="button"
-      variant="outlined"
+      variant="text"
       onClick={() => handleAddToDeck(card)}
     >
-      Add to Deck
+      Add to Collection
     </Button>
   </Wrapper>
 );

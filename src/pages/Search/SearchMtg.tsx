@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import Loader from 'react-loaders';
-import { Card, SearchBar, AnimatedLetters, Collection } from '../../components';
+import { Card, SearchBar, Collection } from '../../components';
 import { IconButton } from '@mui/material';
 import CollectionsIcon from '@mui/material';
 import { Badge } from '@mui/material';
@@ -13,17 +13,19 @@ import { MtgCards } from '../../types/MtgCards';
 import { getAllCards } from '../../FetchCards';
 
 const SearchMtg = () => {
-  const [cartOpen, isCartOpen] = useState(false);
-  const { data, isLoading, status, error } = useQuery<MtgCards[]>(
-    'cards',
-    getAllCards
-  );
-  const [cardsData, setCardsData] = useState(data);
+  // const { data, isLoading, status, error } = useQuery<MtgCards[]>(
+  //   'blue',
+  //   getAllCards
+  // );
+  const [cartOpen, setCartOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [cardsData, setCardsData] = useState<MtgCards[]>([]);
   const [page, setPage] = useState(1);
   const [color, setColor] = useState('red');
 
   useEffect(() => {
     const fetchCards = async () => {
+      setIsLoading(true);
       const { data } = await axios.get(
         `https://api.scryfall.com/cards/search?q=c%3A${color}`,
         {
@@ -32,11 +34,12 @@ const SearchMtg = () => {
           },
         }
       );
+      setIsLoading(false);
       setCardsData(data.data);
     };
 
     fetchCards();
-  }, [isLoading, page, color]);
+  }, [page, color]);
 
   const handleAddToDeck = (clickedCard: MtgCards) => {};
 
@@ -59,14 +62,14 @@ const SearchMtg = () => {
   };
 
   if (isLoading) return <Loader type="pacman" active />;
-  if (error) return <p>Error fetching data</p>;
+  // if (error) return <p>Error fetching data</p>;
   return (
     <main className="search">
       <div className="text-zone">
         <SearchBar />
         <button onClick={prevPage}>Prev</button>
         <button onClick={nextPage}>Next</button>
-        <select name="color" id="color" onChange={handleChange}>
+        <select value={color} name="color" id="color" onChange={handleChange}>
           <option value="red">red</option>
           <option value="white">white</option>
           <option value="green">green</option>
@@ -74,24 +77,22 @@ const SearchMtg = () => {
           <option value="black">black</option>
         </select>
       </div>
-      <Drawer anchor="right" open={cartOpen} onClose={() => isCartOpen(false)}>
+      <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Collection />
       </Drawer>
-      <IconButton className="icon-button" onClick={() => isCartOpen(true)}>
+      <IconButton className="icon-button" onClick={() => setCartOpen(true)}>
         <Badge></Badge>
       </IconButton>
 
-      {status === 'success' && (
-        <Grid container spacing={3}>
-          {cardsData?.map((card) => {
-            return (
-              <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
-                <Card card={card} handleAddToDeck={handleAddToDeck} />
-              </Grid>
-            );
-          })}
-        </Grid>
-      )}
+      <Grid container spacing={3}>
+        {cardsData?.map((card) => {
+          return (
+            <Grid item key={card.id} xs={12} sm={6} md={4} lg={2}>
+              <Card card={card} handleAddToDeck={handleAddToDeck} />
+            </Grid>
+          );
+        })}
+      </Grid>
     </main>
   );
 };
