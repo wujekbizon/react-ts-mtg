@@ -3,20 +3,7 @@ $primary-color: #ee5a24;
 @import 'animate.css';
 @import '~loaders.css/src/animations/pacman.scss';
 
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
-}
-
-@font-face {
-  font-family: 'La Belle Aurore';
-  src: url('./assets/fonts/LaBelleAurore.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Coolvetica';
-  src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2');
-}
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
 .loader-active {
   display: block;
@@ -28,4 +15,8 @@ $primary-color: #ee5a24;
   bottom: 0;
   width: 50px;
   height: 50px;
+}
+
+.section-padding {
+  padding: 4rem 6rem;
 }

@@ -1,239 +1,64 @@
 .home {
-  height: calc(100vh - 80px);
-  width: 100vw;
+  min-height: 100%;
   position: relative;
 
-  .forest-animate img {
-    border-radius: 50%;
-    box-shadow: 0 0 30px 0 rgba(0, 148, 50, 1);
-  }
+  .hero {
+    height: 100%;
 
-  .island-animate img {
-    border-radius: 50%;
-    box-shadow: 0 0 30px 0 rgba(10, 189, 227, 1);
-  }
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      margin-top: 6rem;
 
-  .mountain-animate img {
-    border-radius: 50%;
-    box-shadow: 0 0 30px 0 rgba(234, 32, 39, 1);
-  }
+      h1 {
+        margin: 0;
+        font-size: 70px;
+        font-family: 'Gruppo', cursive;
+      }
 
-  .swamp-animate img {
-    border-radius: 50%;
-    box-shadow: 0 0 30px 0 rgb(196, 190, 190);
-  }
+      .subtitle {
+        font-size: 30px;
+      }
 
-  .plains-animate img {
-    border-radius: 50%;
-    box-shadow: 0 0 30px 0 rgba(245, 246, 250, 1);
-  }
+      p,
+      span {
+        font-size: 14px;
+      }
+    }
 
-  .text-zone {
-    position: absolute;
-    left: 12%;
-    top: 15%;
-    transform: translateY(-50%);
-    width: 80%;
-    max-height: 90%;
-  }
+    .container {
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
 
-  .black-logo {
-    width: 210px;
-    position: fixed;
-    left: 47.15%;
-    top: 45%;
-    opacity: 0;
-    animation: fadeIn 4s 2s forwards;
-  }
+      .forest:hover img {
+        box-shadow: 0 0 20px 0 rgba(0, 148, 50, 1);
+      }
+      .island:hover img {
+        box-shadow: 0 0 20px 0 rgba(10, 189, 227, 1);
+      }
 
-  .active-black {
-    display: none;
-  }
+      .mountain:hover img {
+        box-shadow: 0 0 20px 0 rgba(234, 32, 39, 1);
+      }
 
-  .fire-logo {
-    width: 260px;
-    position: absolute;
-    left: 46%;
-    top: 38.9%;
-    opacity: 0;
-    // animation: zoomIn 2s 3s forwards;
-  }
+      .swamp:hover img {
+        box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+      }
 
-  .active-fire {
-    animation: fadeIn 1.5s 0.5s forwards;
-    // opacity: 1;
-  }
+      .plains:hover img {
+        box-shadow: 0 0 20px 0 rgba(245, 246, 250, 1);
+      }
+    }
 
-  h1 {
-    color: #fff;
-    font-family: Coolvetica;
-    font-weight: 300;
-    font-size: 65px;
-    margin-top: 25px;
-  }
-}
-
-img {
-  width: 100px;
-}
-
-.mountain {
-  position: absolute;
-  left: 40%;
-  bottom: 10%;
-  opacity: 0;
-  animation: fadeInBottomLeft 1s 1.6s forwards;
-  cursor: pointer;
-
-  img:hover {
-    transform: rotateY(180deg);
-    border-radius: 50%;
-    // box-shadow: 0 0 20px 0 rgba(234, 32, 39, 1);
-  }
-}
-
-.forest {
-  position: absolute;
-  left: 33%;
-  top: 50%;
-  opacity: 0;
-  animation: fadeInLeft 1s 1.8s forwards;
-  cursor: pointer;
-
-  img:hover {
-    transform: rotateY(180deg);
-    border-radius: 50%;
-    // box-shadow: 0 0 20px 0 rgba(0, 148, 50, 1);
-  }
-}
-
-.plains {
-  position: fixed;
-  left: 50%;
-  top: 25%;
-  opacity: 0;
-  animation: fadeInDown 1s 1s forwards;
-  cursor: pointer;
-
-  img:hover {
-    transform: rotateY(180deg);
-    border-radius: 50%;
-    // box-shadow: 0 0 20px 0 rgba(245, 246, 250, 1);
-  }
-}
-
-.island {
-  position: absolute;
-  left: 66%;
-  top: 50%;
-  opacity: 0;
-  animation: fadeInRight 1s 1.2s forwards;
-  cursor: pointer;
-
-  img:hover {
-    transform: rotateY(180deg);
-    border-radius: 50%;
-    // box-shadow: 0 0 20px 0 rgba(10, 189, 227, 1);
-  }
-}
-
-.swamp {
-  position: absolute;
-  left: 60%;
-  bottom: 10%;
-  opacity: 0;
-  animation: fadeInBottomRight 1s 1.4s forwards;
-  cursor: pointer;
-
-  img:hover {
-    transform: rotateY(180deg);
-    border-radius: 50%;
-    // box-shadow: 0 0 20px 0 rgb(196, 190, 190);
-  }
-}
-
-@media (max-width: 1240px) {
-  img {
-    width: 90px;
-  }
-
-  .mountain {
-    bottom: 25%;
-  }
-
-  .plains {
-    top: 27.5%;
-  }
-
-  .swamp {
-    bottom: 25%;
-  }
-}
-
-@media (max-width: 960px) {
-  img {
-    width: 70px;
-  }
-
-  .mountain {
-    left: 42.5%;
-    bottom: 35%;
-  }
-
-  .plains {
-    top: 32.5%;
-  }
-
-  .swamp {
-    left: 58.5%;
-    bottom: 35%;
-  }
-
-  .island {
-    left: 62%;
-  }
-
-  .forest {
-    left: 38%;
-  }
-}
-
-@media (max-width: 720px) {
-  img {
-    width: 40px;
-  }
-
-  .plains {
-    position: absolute;
-    left: 5%;
-    top: 40%;
-    animation: fadeInDown 1s 1s forwards;
-  }
-
-  .island {
-    position: absolute;
-    left: 5%;
-    top: 45%;
-    animation: fadeInLeft 1s 1.2s forwards;
-  }
-  .forest {
-    position: absolute;
-    left: 5%;
-    top: 50%;
-    animation: fadeInLeft 1s 1.4s forwards;
-  }
-
-  .swamp {
-    position: absolute;
-    left: 5%;
-    top: 55%;
-    animation: fadeInLeft 1s 1.6s forwards;
-  }
-
-  .mountain {
-    position: absolute;
-    left: 5%;
-    top: 60%;
-    animation: fadeInUp 1s 1.8s forwards;
+    img {
+      width: 140px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
   }
 }

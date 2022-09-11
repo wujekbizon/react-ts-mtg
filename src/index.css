@@ -6,10 +6,48 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-size: 15px;
+  font-family: 'Gruppo', cursive;
   text-align: center;
   color: #fff;
-  background: #000b18;
-  display: block;
+
+  /* ff 3.6+ */
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(67, 30, 63, 1) 0%,
+    rgba(29, 28, 37, 1) 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(67, 30, 63, 1) 0%,
+    rgba(29, 28, 37, 1) 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(
+    180deg,
+    rgba(67, 30, 63, 1) 0%,
+    rgba(29, 28, 37, 1) 100%
+  );
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1D1C25', endColorstr='#431E3F', GradientType=1 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(
+    180deg,
+    rgba(67, 30, 63, 1) 0%,
+    rgba(29, 28, 37, 1) 100%
+  );
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(
+    180deg,
+    rgba(67, 30, 63, 1) 0%,
+    rgba(29, 28, 37, 1) 100%
+  );
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
