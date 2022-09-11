@@ -1,4 +1,4 @@
-import './index.scss';
+import './Sidebar.scss';
 import { NavLink, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +8,7 @@ import {
   faMeteor,
 } from '@fortawesome/free-solid-svg-icons';
 import MtgLogo from '../../assets/images/MtgLogo.png';
+
 interface NavTypes {
   onClick: () => void;
   exact: boolean;

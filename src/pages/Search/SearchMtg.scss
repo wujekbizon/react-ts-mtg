@@ -1,38 +1,37 @@
 .search {
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   padding: 50px;
-  margin-top: 70px;
 }
 
-#mtg h1 {
-  position: absolute;
-  top: 100px;
-  left: 39%;
-  margin-top: 30px;
-  opacity: 0;
-  animation: fadeInLeftBig 3.5s 1.7s forwards;
-}
+// #mtg h1 {
+//   position: absolute;
+//   top: 100px;
+//   left: 39%;
+//   margin-top: 30px;
+//   opacity: 0;
+//   animation: fadeInLeftBig 3.5s 1.7s forwards;
+// }
 
-#search h1 {
-  position: absolute;
-  top: 100px;
-  right: 39%;
-  margin-top: 30px;
-  opacity: 0;
-  animation: fadeInRightBig 3.5s 1.7s forwards;
-}
+// #search h1 {
+//   position: absolute;
+//   top: 100px;
+//   right: 39%;
+//   margin-top: 30px;
+//   opacity: 0;
+//   animation: fadeInRightBig 3.5s 1.7s forwards;
+// }
 
-h1 {
-  font-family: Coolvetica;
-  font-weight: 500;
-  font-size: 50px;
-  letter-spacing: 0.5rem;
-  color: #fff;
-}
+// h1 {
+//   font-family: Coolvetica;
+//   font-weight: 500;
+//   font-size: 50px;
+//   letter-spacing: 0.5rem;
+//   color: #fff;
+// }
 
-.icon-button {
-  position: absolute;
-  z-index: 100;
-  left: 590px;
-  top: -350px;
-}
+// .icon-button {
+//   position: absolute;
+//   z-index: 100;
+//   left: 590px;
+//   top: -350px;
+// }

@@ -11,6 +11,7 @@ import { Drawer } from '@mui/material';
 import { Grid } from '@mui/material';
 import { MtgCards } from '../../types/MtgCards';
 import { getAllCards } from '../../FetchCards';
+import paginate from '../../utils/utils';
 
 const SearchMtg = () => {
   // const { data, isLoading, status, error } = useQuery<MtgCards[]>(
@@ -65,7 +66,7 @@ const SearchMtg = () => {
   // if (error) return <p>Error fetching data</p>;
   return (
     <main className="search">
-      <div className="text-zone">
+      <div className="inner-flex">
         <SearchBar />
         <button onClick={prevPage}>Prev</button>
         <button onClick={nextPage}>Next</button>
@@ -76,23 +77,28 @@ const SearchMtg = () => {
           <option value="blue">blue</option>
           <option value="black">black</option>
         </select>
-      </div>
-      <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-        <Collection />
-      </Drawer>
-      <IconButton className="icon-button" onClick={() => setCartOpen(true)}>
-        <Badge></Badge>
-      </IconButton>
 
-      <Grid container spacing={3}>
-        {cardsData?.map((card) => {
-          return (
-            <Grid item key={card.id} xs={12} sm={6} md={4} lg={2}>
-              <Card card={card} handleAddToDeck={handleAddToDeck} />
-            </Grid>
-          );
-        })}
-      </Grid>
+        <Drawer
+          anchor="right"
+          open={cartOpen}
+          onClose={() => setCartOpen(false)}
+        >
+          <Collection />
+        </Drawer>
+        <IconButton className="icon-button" onClick={() => setCartOpen(true)}>
+          <Badge></Badge>
+        </IconButton>
+
+        <Grid container spacing={3}>
+          {cardsData?.map((card) => {
+            return (
+              <Grid item key={card.id} xs={12} sm={6} md={4} lg={2}>
+                <Card card={card} handleAddToDeck={handleAddToDeck} />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </div>
     </main>
   );
 };
