@@ -260,9 +260,53 @@
     .story {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
       flex-direction: column;
       flex: 1;
+
+      .hero-prolog {
+        padding: 10px 50px;
+      }
+
+      h4 {
+        font-style: italic;
+        font-size: 17px;
+      }
+
+      span {
+        font-style: normal;
+        color: red;
+      }
+
+      input {
+        outline: none;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+
+  .divider {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      margin: 0;
+    }
+  }
+  .swamps {
+    height: 100vh;
+
+    .img-container {
+      height: 80vh;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }

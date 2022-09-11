@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Parallax, Background } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 // Styles
 import './Home.scss';
 import Mountain from '../../assets/images/Mountain.png';
@@ -7,8 +7,8 @@ import Swamp from '../../assets/images/Swamp.png';
 import Forest from '../../assets/images/Forest.png';
 import Island from '../../assets/images/Island.png';
 import Plains from '../../assets/images/Plains.png';
-import LogoB from '../../assets/images/LogoB.png';
-import MtgLogo from '../../assets/images/MtgLogo.png';
+import mainMountains from '../../assets/images/main_mountain.png';
+import mainSwamps from '../../assets/images/main_swamp.png';
 import Hero from '../../assets/images/hero2.png';
 import Reborn from '../../assets/images/reborn.jpg';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
@@ -38,7 +38,9 @@ const Home = () => {
         </div>
         <div className="container">
           <div className="mountain">
-            <img src={Mountain} alt="moutain" />
+            <a href="#mountain">
+              <img src={Mountain} alt="moutain" />
+            </a>
           </div>
           <div className="forest">
             <img src={Forest} alt="forest" />
@@ -50,7 +52,9 @@ const Home = () => {
             <img src={Island} alt="island" />
           </div>
           <div className="swamp">
-            <img src={Swamp} alt="swamp" />
+            <a href="#swamp">
+              <img src={Swamp} alt="swamp" />
+            </a>
           </div>
         </div>
         <div className="scroll">
@@ -95,7 +99,7 @@ const Home = () => {
                   </div>
                   <p>more skills</p>
                   <div className="skill-badge_one two">
-                    {roll === 0 ? '?' : <> -{roll / 3} </>}
+                    {roll === 0 ? '?' : <> -{Math.floor(roll / 3)} </>}
                   </div>
                   <p>more skills</p>
                   <div className="skill-badge_one three">
@@ -123,26 +127,62 @@ const Home = () => {
           </div>
         </Parallax>
         <div className="story">
-          <h2>Story...</h2>
-          <p>more story...</p>
-          <div>
+          <h4>
+            " Hey !! Wake up ! , wake up..... "
+            <br />
+            <span className="hero-text">
+              {' '}
+              ...What ? Who's that ? , Who I 'am ?
+            </span>
+          </h4>
+          <h4>???</h4>
+          <div className="hero-prolog">
+            <h2>
+              He did not know who he was! He stood by burning tree , hearing
+              some voice in his head. Thru his eyes went visions of creatures he
+              slayed. He still felt smell of burnt bodies.
+              <br />
+            </h2>
             <input
               type="text"
               value={heroName}
               onChange={(e) => {
-                console.log(e.target.value.length);
                 if (e.target.value.length >= 19) {
                   return;
                 } else {
                   setHeroName(e.target.value);
                 }
               }}
-            />
+            />{' '}
+            <p>more story...</p>
             <button onClick={handleRoll}>Roll</button>
           </div>
         </div>
       </section>
-      <section className=""></section>
+      <article className="divider linear-gradient">
+        {heroName ? (
+          <h2>
+            {heroName} start his adventure , he was confuse but he decide not to
+            give up.
+          </h2>
+        ) : (
+          <h2>
+            Unknown Hero start his adventure , he was confuse but he decide not
+            to give up.
+            <br />
+            He left behind the giant burning tree. Didn't look back, he could
+            not.
+          </h2>
+        )}
+      </article>
+      <section className="swamps" id="swamp">
+        {/* <Parallax bgImage={mainMountains} strength={800}>
+          <div></div>
+        </Parallax> */}
+        <div className="img-container">
+          <img src={mainSwamps} alt="" />
+        </div>
+      </section>
     </main>
   );
 };
