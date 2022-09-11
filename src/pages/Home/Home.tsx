@@ -11,9 +11,16 @@ import LogoB from '../../assets/images/LogoB.png';
 import MtgLogo from '../../assets/images/MtgLogo.png';
 import Hero from '../../assets/images/hero2.png';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import { diceRoll } from '../../utils/diceRoll';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('');
+  const [roll, setRoll] = useState(0);
+
+  const handleRoll = () => {
+    let roll = diceRoll();
+    setRoll(roll);
+  };
 
   return (
     <main className="home">
@@ -81,8 +88,17 @@ const Home = () => {
                   fill in.
                 </h4>
                 <p>more skills</p>
+                <div className="skill-badge_one">
+                  {roll === 0 ? '?' : '+ 1'}
+                </div>
                 <p>more skills</p>
+                <div className="skill-badge_one two">
+                  {roll === 0 ? '?' : <> -{roll / 3} </>}
+                </div>
                 <p>more skills</p>
+                <div className="skill-badge_one three">
+                  {roll === 0 ? '?' : <> -{roll} </>}
+                </div>
                 <h6>
                   "Who am'I ? , What is this strange filling ?..... and this
                   sword"{' '}
@@ -97,7 +113,9 @@ const Home = () => {
                   <h3>Legendary Planeswalker - Unknown Hero</h3>
                 )}
               </div>
-              <div className="hero-badge">?</div>
+              <div className="hero-badge">
+                {roll === 0 ? '?' : <> {roll} </>}
+              </div>
             </div>
           </div>
         </div>
@@ -108,8 +126,16 @@ const Home = () => {
             <input
               type="text"
               value={heroName}
-              onChange={(e) => setHeroName(e.target.value)}
+              onChange={(e) => {
+                console.log(e.target.value.length);
+                if (e.target.value.length >= 19) {
+                  return;
+                } else {
+                  setHeroName(e.target.value);
+                }
+              }}
             />
+            <button onClick={handleRoll}>Roll</button>
           </div>
         </div>
       </section>

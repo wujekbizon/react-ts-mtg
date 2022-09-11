@@ -180,6 +180,28 @@
             color: black;
             padding: 5px;
 
+            .skill-badge_one {
+              width: 30px;
+              height: 30px;
+              border: 1px solid #bdc3c7;
+              border-radius: 7px 3px;
+              background-color: black;
+              color: white;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              right: -5px;
+              top: 30%;
+            }
+
+            .two {
+              top: 45%;
+            }
+            .three {
+              top: 60%;
+            }
+
             h6 {
               font-style: italic;
               font-size: 12px;
