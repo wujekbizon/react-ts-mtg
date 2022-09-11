@@ -1,6 +1,24 @@
 .search {
   min-height: calc(100vh - 80px);
   padding: 50px;
+
+  /* ff 3.6+ */
+  background: -moz-linear-gradient(180deg, #431e3f 0%, #1d1c25 100%);
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(180deg, #431e3f 0%, #1d1c25 100%);
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(180deg, #431e3f 0%, #1d1c25 100%);
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1D1C25', endColorstr='#431E3F', GradientType=1 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(180deg, #431e3f 0%, #1d1c25 100%);
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(180deg, #431e3f 0%, #1d1c25 100%);
 }
 
 // #mtg h1 {

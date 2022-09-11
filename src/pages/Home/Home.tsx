@@ -11,42 +11,42 @@ import AnimatedLetters from '../../components/AnimatedLetters/AnimatedLeters';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
-  const [letterClass, setLetterClass] = useState('text-animate');
+  // const [letterClass, setLetterClass] = useState('text-animate');
   const [isActiveForest, setActiveForest] = useState(false);
   const [isActiveIsland, setActiveIsland] = useState(false);
   const [isActiveMountain, setActiveMountain] = useState(false);
   const [isActiveSwamp, setActiveSwamp] = useState(false);
   const [isActivePlains, setActivePlains] = useState(false);
-  const nameArray = [
-    'M',
-    'A',
-    'G',
-    'I',
-    'C',
-    ' ',
-    'T',
-    'H',
-    'E',
-    ' ',
-    'G',
-    'A',
-    'T',
-    'H',
-    'E',
-    'R',
-    'I',
-    'N',
-    'G',
-  ];
+  // const nameArray = [
+  //   'M',
+  //   'A',
+  //   'G',
+  //   'I',
+  //   'C',
+  //   ' ',
+  //   'T',
+  //   'H',
+  //   'E',
+  //   ' ',
+  //   'G',
+  //   'A',
+  //   'T',
+  //   'H',
+  //   'E',
+  //   'R',
+  //   'I',
+  //   'N',
+  //   'G',
+  // ];
 
-  useEffect(() => {
-    async function wait() {
-      return setTimeout(() => {
-        setLetterClass('text-animate-hover');
-      }, 4000);
-    }
-    wait();
-  }, []);
+  // useEffect(() => {
+  //   async function wait() {
+  //     return setTimeout(() => {
+  //       setLetterClass('text-animate-hover');
+  //     }, 4000);
+  //   }
+  //   wait();
+  // }, []);
 
   const handleToggleForest = () => {
     setActiveForest(!isActiveForest);
@@ -70,7 +70,7 @@ const Home = () => {
 
   return (
     <main className="home">
-      <div className="text-zone">
+      {/* <div className="text-zone">
         <h1>
           <AnimatedLetters
             letterClass={letterClass}
@@ -78,9 +78,9 @@ const Home = () => {
             idx={15}
           />
         </h1>
-      </div>
+      </div> */}
 
-      <div className="container">
+      {/* <div className="container">
         <div>
           <img
             className={`
@@ -147,7 +147,7 @@ const Home = () => {
         >
           <img src={Plains} alt="Plains" />
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };
