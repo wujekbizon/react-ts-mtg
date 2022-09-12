@@ -12,6 +12,8 @@ import mainSwamps from '../../assets/images/main_swamp.png';
 import Hero from '../../assets/images/hero2.png';
 import Reborn from '../../assets/images/reborn.jpg';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import CasinoIcon from '@mui/icons-material/Casino';
 import { diceRoll } from '../../utils/diceRoll';
 
 const Home = () => {
@@ -128,34 +130,88 @@ const Home = () => {
         </Parallax>
         <div className="story">
           <h4>
-            " Hey !! Wake up ! , wake up..... "
+            <FormatQuoteIcon />
+            Hey !! Wake up ! , wake up.....
+            <FormatQuoteIcon />
             <br />
             <span className="hero-text">
-              {' '}
-              ...What ? Who's that ? , Who I 'am ?
+              <br />
+              <FormatQuoteIcon />
+              ...What ? Who's that ? , Where I 'am ?
+              <FormatQuoteIcon />
             </span>
           </h4>
-          <h4>???</h4>
+
           <div className="hero-prolog">
             <h2>
-              He did not know who he was! He stood by burning tree , hearing
-              some voice in his head. Thru his eyes went visions of creatures he
-              slayed. He still felt smell of burnt bodies.
+              The stranger didn't remember who he was! He stood by burning tree
+              , hearing some voices in his head. Through his eyes, went visions
+              of creatures he slayed. He still felt smell of burnt bodies.
               <br />
+              In his bloody hands , our unknown hero was holding big sword -
+              Sword of the Chosen.
             </h2>
-            <input
-              type="text"
-              value={heroName}
-              onChange={(e) => {
-                if (e.target.value.length >= 19) {
-                  return;
-                } else {
-                  setHeroName(e.target.value);
-                }
-              }}
-            />{' '}
-            <p>more story...</p>
-            <button onClick={handleRoll}>Roll</button>
+            <div className="spacer" />
+            <h4>
+              <FormatQuoteIcon />
+              Hey, Are You alright?
+              <br />
+              Let the Mighty Serra bless you my friend.
+              <br />
+              You Saved us all, from those monsters.
+              <FormatQuoteIcon />
+              <br />
+              <span className="hero-text">
+                <br />
+                <FormatQuoteIcon />
+                ...What is this place?
+                <FormatQuoteIcon />
+                <br />
+              </span>
+              <br />
+              <FormatQuoteIcon />
+              Where are at World Tree in Kaldheim.
+              <br />
+              Do You get name or I should call you Unknown Hero?
+              <FormatQuoteIcon />
+              <br />
+              <br />
+              <FormatQuoteIcon />
+              <span className="hero-text"> You can call me </span>{' '}
+              <input
+                type="text"
+                value={heroName}
+                onChange={(e) => {
+                  if (e.target.value.length >= 19) {
+                    return;
+                  } else {
+                    setHeroName(e.target.value);
+                  }
+                }}
+              />
+              <FormatQuoteIcon />
+            </h4>
+          </div>
+          <div className="facts">
+            <h5>* Facts *</h5>
+
+            <p>
+              In Magic: The Gathering, a Planeswalker is a powerful mage who is
+              able to travel across the planes of existence. There are infinite
+              worlds across the Multiverse, and Planeswalkers are unique in
+              their ability to move from one world to the next, expanding their
+              knowledge and power through the experiences they collect there.
+            </p>
+            <p>
+              Planeswalkers usually have three abilities: one ability that adds
+              loyalty counters as a cost for a small benefit, one that removes a
+              small number of counters as a cost for a larger effect, and one
+              that removes a large number of loyalty counters for a big effect.
+              <span className="roll">
+                Try a Roll
+                <CasinoIcon onClick={handleRoll} />
+              </span>
+            </p>
           </div>
         </div>
       </section>
@@ -164,14 +220,17 @@ const Home = () => {
           <h2>
             {heroName} start his adventure , he was confuse but he decide not to
             give up.
+            <br />
+            He left behind the burning tree. Didn't look back, he couldn't after
+            what he did.
           </h2>
         ) : (
           <h2>
             Unknown Hero start his adventure , he was confuse but he decide not
             to give up.
             <br />
-            He left behind the giant burning tree. Didn't look back, he could
-            not.
+            He left behind the burning tree. Didn't look back, he couldn't after
+            what he did.
           </h2>
         )}
       </article>

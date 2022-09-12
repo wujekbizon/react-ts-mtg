@@ -6,6 +6,7 @@ $linearGradient: linear-gradient(
   rgba(67, 30, 63, 1) 0%,
   rgba(29, 28, 37, 1) 100%
 );
+$text: 'Gruppo', cursive;
 
 @import 'animate.css';
 @import '~loaders.css/src/animations/pacman.scss';
@@ -22,6 +23,10 @@ $linearGradient: linear-gradient(
   bottom: 0;
   width: 50px;
   height: 50px;
+}
+
+.spacer {
+  margin: 150px 0;
 }
 
 .section-padding {

@@ -93,8 +93,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        // background-image: url('../../assets/images/reborn.jpg');
-        // background-size: cover;
         min-height: 100vh;
 
         .hero-card {
@@ -260,7 +258,7 @@
     .story {
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: space-around;
       flex-direction: column;
       flex: 1;
 
@@ -270,12 +268,16 @@
 
       h4 {
         font-style: italic;
-        font-size: 17px;
+        font-size: 20px;
+      }
+
+      .hero-text {
+        font-size: 20px;
       }
 
       span {
         font-style: normal;
-        color: red;
+        color: $primary-color;
       }
 
       input {
@@ -283,6 +285,29 @@
         border: none;
         background: transparent;
         border-bottom: 1px solid black;
+        color: $primary-color;
+        font-size: 18px;
+        cursor: default;
+        width: 170px;
+        font-family: $text;
+      }
+
+      .facts {
+        padding: 0 100px;
+        line-height: 20px;
+        font-size: 16px;
+        font-style: italic;
+
+        .roll {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          svg {
+            margin-left: 20px;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
