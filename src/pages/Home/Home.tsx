@@ -40,9 +40,7 @@ const Home = () => {
         </div>
         <div className="container">
           <div className="mountain">
-            <a href="#mountain">
-              <img src={Mountain} alt="moutain" />
-            </a>
+            <img src={Mountain} alt="moutain" />
           </div>
           <div className="forest">
             <img src={Forest} alt="forest" />
@@ -54,9 +52,7 @@ const Home = () => {
             <img src={Island} alt="island" />
           </div>
           <div className="swamp">
-            <a href="#swamp">
-              <img src={Swamp} alt="swamp" />
-            </a>
+            <img src={Swamp} alt="swamp" />
           </div>
         </div>
         <div className="scroll">
@@ -65,6 +61,14 @@ const Home = () => {
           <KeyboardDoubleArrowDownIcon />
         </div>
       </section>
+      <article className="divider bg-dark">
+        <h2 className="adventure">
+          Start You Adventure Now - Explore what's been lost in neons of time.
+          <br />
+          As a one of a few powerful being , change a wheel of time. Become a
+          <span className="planeswalker"> Planeswalker. </span>
+        </h2>
+      </article>
       <section className="begin">
         <Parallax className="parallax" bgImage={Reborn} strength={800}>
           <div className="hero-container">
@@ -144,17 +148,16 @@ const Home = () => {
 
           <div className="hero-prolog">
             <h2>
-              The stranger didn't remember who he was! He stood by burning tree
+              The stranger didn't remember who he was. He stood by burning tree
               , hearing some voices in his head. Through his eyes, went visions
               of creatures he slayed. He still felt smell of burnt bodies.
               <br />
               In his bloody hands , our unknown hero was holding big sword -
               Sword of the Chosen.
             </h2>
-            <div className="spacer" />
             <h4>
               <FormatQuoteIcon />
-              Hey, Are You alright?
+              Hey, Are You alright ?
               <br />
               Let the Mighty Serra bless you my friend.
               <br />
@@ -164,7 +167,7 @@ const Home = () => {
               <span className="hero-text">
                 <br />
                 <FormatQuoteIcon />
-                ...What is this place?
+                ...What is this place ?
                 <FormatQuoteIcon />
                 <br />
               </span>
@@ -172,7 +175,7 @@ const Home = () => {
               <FormatQuoteIcon />
               Where are at World Tree in Kaldheim.
               <br />
-              Do You get name or I should call you Unknown Hero?
+              Do You get name or I should call you Unknown Hero ?
               <FormatQuoteIcon />
               <br />
               <br />
@@ -218,26 +221,23 @@ const Home = () => {
       <article className="divider linear-gradient">
         {heroName ? (
           <h2>
-            {heroName} start his adventure , he was confuse but he decide not to
-            give up.
+            {heroName} started his adventure , he was confused but he decide not
+            to give up.
             <br />
             He left behind the burning tree. Didn't look back, he couldn't after
             what he did.
           </h2>
         ) : (
           <h2>
-            Unknown Hero start his adventure , he was confuse but he decide not
-            to give up.
+            Unknown Hero started his adventure , he was confused but he decide
+            not to give up.
             <br />
             He left behind the burning tree. Didn't look back, he couldn't after
             what he did.
           </h2>
         )}
       </article>
-      <section className="swamps" id="swamp">
-        {/* <Parallax bgImage={mainMountains} strength={800}>
-          <div></div>
-        </Parallax> */}
+      <section className="swamps">
         <div className="img-container">
           <img src={mainSwamps} alt="" />
         </div>

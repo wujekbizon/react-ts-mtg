@@ -25,12 +25,16 @@ $text: 'Gruppo', cursive;
   height: 50px;
 }
 
-.spacer {
-  margin: 150px 0;
-}
-
 .section-padding {
   padding: 4rem 6rem;
+}
+
+.bg-dark {
+  background-color: rgba(29, 28, 37, 1);
+}
+
+.planeswalker {
+  color: $primary-color;
 }
 
 .linear-gradient {
