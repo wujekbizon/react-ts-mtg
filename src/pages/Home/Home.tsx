@@ -19,6 +19,7 @@ import { diceRoll } from '../../utils/diceRoll';
 const Home = () => {
   const [heroName, setHeroName] = useState('');
   const [roll, setRoll] = useState(0);
+  const [mana, setMana] = useState(null);
 
   const handleRoll = () => {
     let roll = diceRoll();
@@ -147,14 +148,15 @@ const Home = () => {
           </h4>
 
           <div className="hero-prolog">
+            <hr />
             <h2>
               The stranger didn't remember who he was. He stood by burning tree
               , hearing some voices in his head. Through his eyes, went visions
-              of creatures he slayed. He still felt smell of burnt bodies.
-              <br />
-              In his bloody hands , our unknown hero was holding big sword -
-              Sword of the Chosen.
+              of creatures he slayed. He still felt smell of burnt bodies. In
+              his bloody hands , our unknown hero was holding big sword - Sword
+              of the Chosen.
             </h2>
+            <hr />
             <h4>
               <FormatQuoteIcon />
               Hey, Are You alright ?
@@ -173,9 +175,9 @@ const Home = () => {
               </span>
               <br />
               <FormatQuoteIcon />
-              Where are at World Tree in Kaldheim.
+              We are by World Tree in Kaldheim, at least what left of it.
               <br />
-              Do You get name or I should call you Unknown Hero ?
+              Do You got name, stranger or I should call you Unknown Hero ?
               <FormatQuoteIcon />
               <br />
               <br />

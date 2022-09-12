@@ -264,10 +264,14 @@
 
       .hero-prolog {
         padding: 0 50px;
+        line-height: 30px;
+
+        hr {
+          opacity: 0.1;
+        }
 
         h2 {
           font-size: 23px;
-          margin-bottom: 80px;
         }
       }
 
