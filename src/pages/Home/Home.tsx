@@ -8,6 +8,9 @@ import Island from '../../assets/images/Island.png';
 import Plains from '../../assets/images/Plains.png';
 import mainMountains from '../../assets/images/main_mountain.png';
 import mainSwamps from '../../assets/images/main_swamp.png';
+import mainForest from '../../assets/images/main_forest.png';
+import mainPlains from '../../assets/images/main_plains.png';
+import mainIsland from '../../assets/images/main_island.png';
 import Hero from '../../assets/images/hero2.png';
 import Reborn from '../../assets/images/reborn.jpg';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
@@ -249,9 +252,29 @@ const Home = () => {
           </h2>
         )}
       </article>
-      <section className="swamps">
+      <section className="swamp">
         <div className="img-container">
-          <img src={mainSwamps} alt="" />
+          <img src={mainSwamps} alt="swamp" />
+        </div>
+      </section>
+      <section className="forest">
+        <div className="img-container">
+          <img src={mainForest} alt="forest" />
+        </div>
+      </section>
+      <section className="plains">
+        <div className="img-container">
+          <img src={mainPlains} alt="plains" />
+        </div>
+      </section>
+      <section className="mountain">
+        <div className="img-container">
+          <img src={mainMountains} alt="mountain" />
+        </div>
+      </section>
+      <section className="island">
+        <div className="img-container">
+          <img src={mainIsland} alt="island" />
         </div>
       </section>
     </main>
