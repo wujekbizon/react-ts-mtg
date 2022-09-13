@@ -52,3 +52,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+
+.swamp-active {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 1);
+}
+
+.island-active {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 5px rgba(10, 189, 227, 1);
+}
+
+.mountain-active {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 5px rgba(234, 32, 39, 1);
+}
+
+.forest-active {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 5px rgba(0, 148, 50, 1);
+}
+
+.plains-active {
+  border-radius: 50%;
+  box-shadow: 0 0px 5px 5px rgba(245, 246, 250, 1);
+}

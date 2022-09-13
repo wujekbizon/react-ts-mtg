@@ -41,30 +41,31 @@
       justify-content: space-evenly;
 
       .forest:hover img {
-        box-shadow: 0 0 20px 0 rgba(0, 148, 50, 1);
+        box-shadow: 0 0 15px 0 rgba(0, 148, 50, 1);
       }
       .island:hover img {
-        box-shadow: 0 0 20px 0 rgba(10, 189, 227, 1);
+        box-shadow: 0 0 15px 0 rgba(10, 189, 227, 1);
       }
 
       .mountain:hover img {
-        box-shadow: 0 0 20px 0 rgba(234, 32, 39, 1);
+        box-shadow: 0 0 15px 0 rgba(234, 32, 39, 1);
       }
 
       .swamp:hover img {
-        box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 1);
       }
 
       .plains:hover img {
-        box-shadow: 0 0 20px 0 rgba(245, 246, 250, 1);
+        box-shadow: 0 0 15px 0 rgba(245, 246, 250, 1);
+      }
+
+      img {
+        width: 120px;
+        border-radius: 50%;
+        cursor: pointer;
       }
     }
 
-    img {
-      width: 120px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
     .scroll {
       display: flex;
       align-items: center;

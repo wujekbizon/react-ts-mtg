@@ -19,7 +19,7 @@ import { diceRoll } from '../../utils/diceRoll';
 const Home = () => {
   const [heroName, setHeroName] = useState('');
   const [roll, setRoll] = useState(0);
-  const [mana, setMana] = useState(null);
+  const [mana, setMana] = useState('');
 
   const handleRoll = () => {
     let roll = diceRoll();
@@ -39,20 +39,46 @@ const Home = () => {
             <span>Wolfinger Trademark 2022 ⓒ All Rights Reserved</span>
           </div>
         </div>
+
         <div className="container">
-          <div className="mountain">
+          <div
+            className={mana === 'red' ? `mountain mountain-active` : 'mountain'}
+            onClick={() => {
+              setMana('red');
+            }}
+          >
             <img src={Mountain} alt="moutain" />
           </div>
-          <div className="forest">
+          <div
+            className={mana === 'green' ? 'forest forest-active' : 'forest'}
+            onClick={() => {
+              setMana('green');
+            }}
+          >
             <img src={Forest} alt="forest" />
           </div>
-          <div className="plains">
+          <div
+            className={mana === 'white' ? 'plains plains-active' : 'plains'}
+            onClick={() => {
+              setMana('white');
+            }}
+          >
             <img src={Plains} alt="plain" />
           </div>
-          <div className="island">
+          <div
+            className={mana === 'blue' ? 'island island-active' : 'island'}
+            onClick={() => {
+              setMana('blue');
+            }}
+          >
             <img src={Island} alt="island" />
           </div>
-          <div className="swamp">
+          <div
+            className={mana === 'black' ? 'swamp swamp-active' : 'swamp'}
+            onClick={() => {
+              setMana('black');
+            }}
+          >
             <img src={Swamp} alt="swamp" />
           </div>
         </div>
@@ -82,7 +108,21 @@ const Home = () => {
                       <span>1</span>
                     </div>
                     <div className="colorless-mana">
-                      <img src={Swamp} alt="swamp" className="mana" />
+                      {mana === 'black' && (
+                        <img src={Swamp} alt="swamp" className="mana" />
+                      )}
+                      {mana === 'red' && (
+                        <img src={Mountain} alt="mountain" className="mana" />
+                      )}
+                      {mana === 'green' && (
+                        <img src={Forest} alt="forest" className="mana" />
+                      )}
+                      {mana === 'white' && (
+                        <img src={Plains} alt="plains" className="mana" />
+                      )}
+                      {mana === 'blue' && (
+                        <img src={Island} alt="island" className="mana" />
+                      )}
                     </div>
                     <div className="colorless-mana">
                       <img src={Swamp} alt="swamp" className="mana" />
