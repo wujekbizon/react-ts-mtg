@@ -15,6 +15,7 @@ import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrow
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CasinoIcon from '@mui/icons-material/Casino';
 import { diceRoll } from '../../utils/diceRoll';
+import { ManaSymbol } from '../../components/';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('');
@@ -104,29 +105,9 @@ const Home = () => {
                 <div className="name-border">
                   {heroName ? <h2>{heroName}</h2> : <h2>Unknown Hero</h2>}
                   <div className="mana-cost">
-                    <div className="colorless-mana">
-                      <span>1</span>
-                    </div>
-                    <div className="colorless-mana">
-                      {mana === 'black' && (
-                        <img src={Swamp} alt="swamp" className="mana" />
-                      )}
-                      {mana === 'red' && (
-                        <img src={Mountain} alt="mountain" className="mana" />
-                      )}
-                      {mana === 'green' && (
-                        <img src={Forest} alt="forest" className="mana" />
-                      )}
-                      {mana === 'white' && (
-                        <img src={Plains} alt="plains" className="mana" />
-                      )}
-                      {mana === 'blue' && (
-                        <img src={Island} alt="island" className="mana" />
-                      )}
-                    </div>
-                    <div className="colorless-mana">
-                      <img src={Swamp} alt="swamp" className="mana" />
-                    </div>
+                    <ManaSymbol mana="1" />
+                    <ManaSymbol mana={mana} />
+                    <ManaSymbol mana={mana} />
                   </div>
                 </div>
               </div>
