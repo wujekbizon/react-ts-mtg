@@ -1,7 +1,6 @@
+import './Home.scss';
 import { useState } from 'react';
 import { Parallax } from 'react-parallax';
-// Styles
-import './Home.scss';
 import Mountain from '../../assets/images/Mountain.png';
 import Swamp from '../../assets/images/Swamp.png';
 import Forest from '../../assets/images/Forest.png';
@@ -16,6 +15,7 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CasinoIcon from '@mui/icons-material/Casino';
 import { diceRoll } from '../../utils/diceRoll';
 import { ManaSymbol } from '../../components/';
+import { facts } from '../../data/facts';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('');
@@ -106,8 +106,8 @@ const Home = () => {
                   {heroName ? <h2>{heroName}</h2> : <h2>Unknown Hero</h2>}
                   <div className="mana-cost">
                     <ManaSymbol mana="1" />
-                    <ManaSymbol mana={mana} />
-                    <ManaSymbol mana={mana} />
+                    <ManaSymbol mana={mana || 'red'} />
+                    <ManaSymbol mana={mana || 'red'} />
                   </div>
                 </div>
               </div>
@@ -221,23 +221,12 @@ const Home = () => {
           <div className="facts">
             <h5>* Facts *</h5>
 
-            <p>
-              In Magic: The Gathering, a Planeswalker is a powerful mage who is
-              able to travel across the planes of existence. There are infinite
-              worlds across the Multiverse, and Planeswalkers are unique in
-              their ability to move from one world to the next, expanding their
-              knowledge and power through the experiences they collect there.
-            </p>
-            <p>
-              Planeswalkers usually have three abilities: one ability that adds
-              loyalty counters as a cost for a small benefit, one that removes a
-              small number of counters as a cost for a larger effect, and one
-              that removes a large number of loyalty counters for a big effect.
-              <span className="roll">
-                Try a Roll
-                <CasinoIcon onClick={handleRoll} />
-              </span>
-            </p>
+            <p>{facts[0].text}</p>
+            <p>{facts[1].text}</p>
+            <span className="roll">
+              Try a Roll
+              <CasinoIcon onClick={handleRoll} />
+            </span>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import React from 'react';
+import './ManaSymbol.scss';
 import Mountain from '../../assets/images/Mountain.png';
 import Swamp from '../../assets/images/Swamp.png';
 import Forest from '../../assets/images/Forest.png';
