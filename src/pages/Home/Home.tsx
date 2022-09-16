@@ -252,27 +252,27 @@ const Home = () => {
           </h2>
         )}
       </article>
-      <section className="swamp">
+      <section className="swamp-path">
         <div className="img-container">
           <img src={mainSwamps} alt="swamp" />
         </div>
       </section>
-      <section className="forest">
+      <section className="forest-path">
         <div className="img-container">
           <img src={mainForest} alt="forest" />
         </div>
       </section>
-      <section className="plains">
+      <section className="plains-path">
         <div className="img-container">
           <img src={mainPlains} alt="plains" />
         </div>
       </section>
-      <section className="mountain">
+      <section className="mountain-path">
         <div className="img-container">
           <img src={mainMountains} alt="mountain" />
         </div>
       </section>
-      <section className="island">
+      <section className="island-path">
         <div className="img-container">
           <img src={mainIsland} alt="island" />
         </div>
