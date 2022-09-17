@@ -2,10 +2,12 @@
 
 .home {
   height: calc(100vh - 80px);
+
   position: relative;
 
   .hero {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,16 +67,6 @@
         cursor: pointer;
       }
     }
-
-    .scroll {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      p {
-        margin: 0 1rem;
-      }
-    }
   }
   .begin {
     height: 100vh;
@@ -84,10 +76,6 @@
 
     .parallax {
       flex: 1;
-
-      img.react-parallax-bgimage {
-        height: 100% !important;
-      }
 
       .hero-container {
         flex: 1;
@@ -257,7 +245,7 @@
         h4 {
           font-style: italic;
           font-size: 20px;
-          text-align: start;
+          text-align: left;
           margin: 30px 30px 0 30px;
         }
       }
@@ -307,7 +295,8 @@
     height: 250px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: column;
 
     h2 {
       margin: 0;
@@ -322,65 +311,149 @@
   .swamp-path {
     height: 100vh;
 
-    .img-container {
-      height: 80vh;
-      width: 100%;
+    .modal {
+      height: 100vh;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.95);
 
-      img {
-        height: 100vh;
-        width: 100%;
+      .swamp {
+        position: absolute;
+        right: calc(50% - 50px);
+        bottom: calc(50% - 50px);
+
+        img {
+          height: 120px;
+          width: 120px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .content-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 150px 100px 30px 150px;
+
+      .black-left {
+        width: 400px;
+        height: 100%;
+        text-align: left;
+        padding: 50px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid black;
+
+        span {
+          color: black;
+          font-weight: 600;
+        }
+
+        h1 {
+          font-size: 45px;
+          color: black;
+          line-height: 40px;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        h2 {
+          line-height: 30px;
+          font-weight: 300;
+          font-size: 32px;
+        }
+      }
+    }
+    .facts-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 30px;
+
+      .facts {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        background-color: rgba(29, 28, 37, 1);
+        padding: 10px;
+
+        h4 {
+          margin: 0;
+          margin-top: 5px;
+        }
+
+        p {
+          font-size: 16px;
+        }
       }
     }
   }
+
   .forest-path {
     height: 100vh;
 
-    .img-container {
-      height: 80vh;
-      width: 100%;
+    .content-container {
+      height: 100vh;
 
-      img {
-        height: 100vh;
-        width: 100%;
+      .forest {
+        align-self: flex-start;
+
+        img {
+          height: 100px;
+          width: 100px;
+        }
       }
     }
   }
+
   .plains-path {
     height: 100vh;
 
-    .img-container {
+    .content-container {
       height: 100vh;
-      width: 100%;
 
-      img {
-        height: 100vh;
-        width: 100%;
+      .plains {
+        align-self: flex-start;
+
+        img {
+          height: 100px;
+          width: 100px;
+        }
       }
     }
   }
+
   .mountain-path {
     height: 100vh;
 
-    .img-container {
+    .content-container {
       height: 100vh;
-      width: 100%;
 
-      img {
-        height: 100vh;
-        width: 100%;
+      .mountain {
+        align-self: flex-start;
+
+        img {
+          height: 100px;
+          width: 100px;
+        }
       }
     }
   }
+
   .island-path {
     height: 100vh;
 
-    .img-container {
+    .content-container {
       height: 100vh;
-      width: 100%;
 
-      img {
-        height: 100vh;
-        width: 100%;
+      .island {
+        align-self: flex-start;
+
+        img {
+          height: 100px;
+          width: 100px;
+        }
       }
     }
   }

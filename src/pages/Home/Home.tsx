@@ -21,7 +21,7 @@ import { ManaSymbol } from '../../components/';
 import { facts } from '../../data/facts';
 
 const Home = () => {
-  const [heroName, setHeroName] = useState('');
+  const [heroName, setHeroName] = useState('Unknown Hero');
   const [roll, setRoll] = useState(0);
   const [mana, setMana] = useState('');
 
@@ -166,7 +166,7 @@ const Home = () => {
             <span className="hero-text">
               <br />
               <FormatQuoteIcon />
-              ...What ? Who's that ? , Where I 'am ?
+              ...What ? Who's that ? , Where I am ?
               <FormatQuoteIcon />
             </span>
           </h4>
@@ -208,6 +208,7 @@ const Home = () => {
               <FormatQuoteIcon />
               <span className="hero-text"> You can call me </span>{' '}
               <input
+                autoFocus
                 type="text"
                 value={heroName}
                 onChange={(e) => {
@@ -222,8 +223,7 @@ const Home = () => {
             </h4>
           </div>
           <div className="facts">
-            <h5>* Facts *</h5>
-
+            <h5>* FACTS *</h5>
             <p>{facts[0].text}</p>
             <p>{facts[1].text}</p>
             <span className="roll">
@@ -233,49 +233,91 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <article className="divider linear-gradient">
-        {heroName ? (
-          <h2>
-            {heroName} started his adventure , he was confused but he decide not
-            to give up.
-            <br />
-            He left behind the burning tree. Didn't look back, he couldn't after
-            what he did.
-          </h2>
-        ) : (
-          <h2>
-            Unknown Hero started his adventure , he was confused but he decide
-            not to give up.
-            <br />
-            He left behind the burning tree. Didn't look back, he couldn't after
-            what he did.
-          </h2>
-        )}
+      <article className="divider linear-gradient ">
+        <h2>
+          {heroName} started his adventure , he was confused but decide not to
+          give up.
+          <br />
+          He left behind the burning tree. Didn't look back, he couldn't after
+          what he did.
+        </h2>
+        <div className="scroll">
+          <KeyboardDoubleArrowDownIcon />
+          <p>End of Prolog</p>
+          <KeyboardDoubleArrowDownIcon />
+        </div>
       </article>
+
+      <article className="divider bg-dark"></article>
       <section className="swamp-path">
-        <div className="img-container">
-          <img src={mainSwamps} alt="swamp" />
-        </div>
+        <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
+          <div className="modal">
+            <div className="swamp">
+              <img src={Swamp} alt="swamp" />
+            </div>
+          </div>
+
+          <div className="content-container">
+            <div className="black-left">
+              <h1>BLACK</h1>
+              <h2>
+                <span>Black</span> is one of the five colors of mana in Magic.
+                It is drawn from the power of swamps and embodies the principles
+                of parasitism and amorality (though not necessarily immorality).
+                The mana symbol for Black is represented by a skull. On the
+                color pie, it is the ally of blue and red, and the enemy of
+                white and green. Black seeks power through ruthlessness or
+                opportunity.
+              </h2>
+            </div>
+            <div className="facts-container">
+              <div className="facts">
+                <h4>* FACTS *</h4>
+                <p>{facts[2].text}</p>
+              </div>
+            </div>
+          </div>
+        </Parallax>
       </section>
+      <article className="divider bg-dark"></article>
       <section className="forest-path">
-        <div className="img-container">
-          <img src={mainForest} alt="forest" />
-        </div>
+        <Parallax className="parallax" bgImage={mainForest} strength={800}>
+          <div className="content-container">
+            <div className="forest">
+              <img src={Forest} alt="forest" />
+            </div>
+          </div>
+        </Parallax>
       </section>
+      <article className="divider bg-dark"></article>
       <section className="plains-path">
-        <div className="img-container">
-          <img src={mainPlains} alt="plains" />
-        </div>
+        <Parallax className="parallax" bgImage={mainPlains} strength={800}>
+          <div className="content-container">
+            <div className="plains">
+              <img src={Plains} alt="plains" />
+            </div>
+          </div>
+        </Parallax>
       </section>
+      <article className="divider bg-dark"></article>
       <section className="mountain-path">
-        <div className="img-container">
-          <img src={mainMountains} alt="mountain" />
-        </div>
+        <Parallax className="parallax" bgImage={mainMountains} strength={800}>
+          <div className="content-container">
+            <div className="mountain">
+              <img src={Mountain} alt="mountain" />
+            </div>
+          </div>
+        </Parallax>
       </section>
+      <article className="divider bg-dark"></article>
       <section className="island-path">
-        <div className="img-container">
-          <img src={mainIsland} alt="island" />
-        </div>
+        <Parallax className="parallax" bgImage={mainIsland} strength={800}>
+          <div className="content-container">
+            <div className="island">
+              <img src={Island} alt="island" />
+            </div>
+          </div>
+        </Parallax>
       </section>
     </main>
   );

@@ -13,6 +13,14 @@ $text: 'Gruppo', cursive;
 
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
+.parallax {
+  height: 100vh;
+}
+img.react-parallax-bgimage {
+  height: 100% !important;
+  width: 100% !important;
+}
+
 .loader-active {
   display: block;
   position: absolute;

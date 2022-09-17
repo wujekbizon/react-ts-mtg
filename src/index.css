@@ -9,6 +9,7 @@ body {
   font-family: 'Gruppo', cursive;
   text-align: center;
   color: #fff;
+  overflow-x: hidden;
 
   /* ff 3.6+ */
   background: -moz-linear-gradient(
@@ -76,4 +77,14 @@ body {
 .plains-active {
   border-radius: 50%;
   box-shadow: 0 0px 5px 5px rgba(245, 246, 250, 1);
+}
+
+.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll p {
+  margin: 0 1rem;
 }
