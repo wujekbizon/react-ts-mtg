@@ -16,14 +16,19 @@ import Reborn from '../../assets/images/reborn.jpg';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CasinoIcon from '@mui/icons-material/Casino';
+import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import { diceRoll } from '../../utils/diceRoll';
 import { ManaSymbol } from '../../components/';
-import { facts } from '../../data/facts';
+import { facts, tribes, abilities } from '../../data/';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('Unknown Hero');
   const [roll, setRoll] = useState(0);
   const [mana, setMana] = useState('');
+  const [active, setActive] = useState(false);
+  const [isOpenTribes, setIsOpenTribes] = useState(false);
+  const [isOpenAbilities, setIsOpenAbilities] = useState(false);
 
   const handleRoll = () => {
     let roll = diceRoll();
@@ -248,35 +253,122 @@ const Home = () => {
         </div>
       </article>
 
-      <article className="divider bg-dark"></article>
+      <article className="divider bg-dark">
+        <h2>
+          <FormatQuoteIcon />
+          <br />
+          Our Hero ventured thru deep forested wetlands, filled with mud,
+          rotting vegetation and full of strange and disgusting insect
+          population.
+          <br />
+          <FormatQuoteIcon />
+        </h2>
+      </article>
       <section className="swamp-path">
         <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
-          <div className="modal">
-            <div className="swamp">
-              <img src={Swamp} alt="swamp" />
-            </div>
-          </div>
-
-          <div className="content-container">
-            <div className="black-left">
-              <h1>BLACK</h1>
-              <h2>
-                <span>Black</span> is one of the five colors of mana in Magic.
-                It is drawn from the power of swamps and embodies the principles
-                of parasitism and amorality (though not necessarily immorality).
-                The mana symbol for Black is represented by a skull. On the
-                color pie, it is the ally of blue and red, and the enemy of
-                white and green. Black seeks power through ruthlessness or
-                opportunity.
-              </h2>
-            </div>
-            <div className="facts-container">
-              <div className="facts">
-                <h4>* FACTS *</h4>
-                <p>{facts[2].text}</p>
+          {!active ? (
+            <aside className={active ? 'active' : 'modal'}>
+              <div className="swamp">
+                <img src={Swamp} alt="swamp" onClick={() => setActive(true)} />
               </div>
-            </div>
-          </div>
+            </aside>
+          ) : (
+            <article className={active ? 'black-wrapper' : 'none'}>
+              <div className="black-container">
+                <div className="black-features">
+                  <div className="black-gameplay">
+                    <h3>Gameplay</h3>
+                    <p>
+                      Black usually doesn't do well in the late game, rather, it
+                      finds innovative ways to get superior positions early on
+                      so that it can rule in the midgame. Often, this means you
+                      will sacrifice life for cards for an early advantage. Card
+                      advantage plays a very big role, though at the loss of
+                      life. It can play very well by itself through corruption
+                      effects (see Corrupt) and work with other colors all
+                      equally well. Reanimation decks have always been a
+                      favorite, finding ways to dump big, expensive creatures
+                      into the graveyard early and then play them from there for
+                      cheap. Animate Dead and Zombify both work well for this.
+                      Black is also known for it's discard effects.
+                    </p>
+                  </div>
+                  <div className="black-bottom">
+                    <div className="black-abilities">
+                      <h3>Abilities</h3>
+                      {isOpenAbilities ? (
+                        <ArrowCircleUpIcon
+                          className="icon"
+                          onClick={() => setIsOpenAbilities(false)}
+                        />
+                      ) : (
+                        <ExpandCircleDownIcon
+                          className="icon"
+                          onClick={() => setIsOpenAbilities(true)}
+                        />
+                      )}
+                      {isOpenAbilities ? (
+                        <ul className={isOpenAbilities ? 'open' : ''}>
+                          {abilities.map((a) => (
+                            <li key={a}>{a}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                    <div className="black-tribes">
+                      <h3>Creature Tribes</h3>
+                      {isOpenTribes ? (
+                        <ArrowCircleUpIcon
+                          className="icon"
+                          onClick={() => setIsOpenTribes(false)}
+                        />
+                      ) : (
+                        <ExpandCircleDownIcon
+                          className="icon"
+                          onClick={() => setIsOpenTribes(true)}
+                        />
+                      )}
+                      {isOpenTribes ? (
+                        <ul className={isOpenTribes ? 'open' : ''}>
+                          {tribes.map((tribe) => (
+                            <li key={tribe}>{tribe}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="black-content">
+                  <h1>BLACK</h1>
+                  <h2>
+                    <span>Black</span> is one of the five colors of mana in
+                    Magic. It is drawn from the power of swamps and embodies the
+                    principles of parasitism and amorality (though not
+                    necessarily immorality). The mana symbol for Black is
+                    represented by a skull. On the color pie, it is the ally of
+                    blue and red, and the enemy of white and green. Black seeks
+                    power through ruthlessness or opportunity.
+                  </h2>
+
+                  <img
+                    src={Swamp}
+                    alt="swamp"
+                    onClick={() => setActive(false)}
+                  />
+                </div>
+              </div>
+              <div className="facts-container">
+                <div className="facts">
+                  <h4>* FACTS *</h4>
+                  <p>{facts[2].text}</p>
+                </div>
+              </div>
+            </article>
+          )}
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
