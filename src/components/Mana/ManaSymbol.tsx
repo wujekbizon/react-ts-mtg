@@ -4,10 +4,9 @@ import Swamp from '../../assets/images/Swamp.png';
 import Forest from '../../assets/images/Forest.png';
 import Island from '../../assets/images/Island.png';
 import Plains from '../../assets/images/Plains.png';
-import { ReactNode } from 'react';
 
 type Props = {
-  mana: ReactNode;
+  mana: string;
 };
 
 const ManaSymbol = ({ mana }: Props) => {

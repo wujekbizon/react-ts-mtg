@@ -1,6 +1,8 @@
 import './Home.scss';
 import { useState } from 'react';
 import { Parallax } from 'react-parallax';
+import { diceRoll } from '../../utils/diceRoll';
+// Images
 import Mountain from '../../assets/images/Mountain.png';
 import Swamp from '../../assets/images/Swamp.png';
 import Forest from '../../assets/images/Forest.png';
@@ -13,14 +15,15 @@ import mainPlains from '../../assets/images/main_plains.png';
 import mainIsland from '../../assets/images/main_island.png';
 import Hero from '../../assets/images/hero2.png';
 import Reborn from '../../assets/images/reborn.jpg';
+// Icons
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CasinoIcon from '@mui/icons-material/Casino';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-import { diceRoll } from '../../utils/diceRoll';
+// components
 import { ManaSymbol, Modal } from '../../components/';
-import { facts, tribes, abilities } from '../../data/';
+import { facts, tribes, abilities, black } from '../../data/';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('Unknown Hero');
@@ -31,7 +34,7 @@ const Home = () => {
   const [isOpenAbilities, setIsOpenAbilities] = useState(false);
 
   const handleRoll = () => {
-    let roll = diceRoll();
+    const roll = diceRoll();
     setRoll(roll);
   };
 
@@ -264,35 +267,21 @@ const Home = () => {
           <FormatQuoteIcon />
         </h2>
       </article>
-      <section className="swamp-path">
+      <section className="page">
         <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
           {!active ? (
             <Modal
               active={active}
               imgSrc={Swamp}
               onClick={() => setActive(true)}
-              altName="swamp"
             />
           ) : (
-            <article className={active ? 'black-wrapper' : 'none'}>
+            <article className={active ? 'wrapper section-padding' : 'none'}>
               <div className="black-container">
                 <div className="black-features">
                   <div className="black-gameplay">
                     <h3>Gameplay</h3>
-                    <p>
-                      Black usually doesn't do well in the late game, rather, it
-                      finds innovative ways to get superior positions early on
-                      so that it can rule in the midgame. Often, this means you
-                      will sacrifice life for cards for an early advantage. Card
-                      advantage plays a very big role, though at the loss of
-                      life. It can play very well by itself through corruption
-                      effects (see Corrupt) and work with other colors all
-                      equally well. Reanimation decks have always been a
-                      favorite, finding ways to dump big, expensive creatures
-                      into the graveyard early and then play them from there for
-                      cheap. Animate Dead and Zombify both work well for this.
-                      Black is also known for it's discard effects.
-                    </p>
+                    <p>{black[0]}</p>
                   </div>
                   <div className="black-bottom">
                     <div className="black-abilities">
@@ -343,18 +332,12 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="black-content">
+                <div className="black-info">
                   <h1>BLACK</h1>
                   <h2>
-                    <span>Black</span> is one of the five colors of mana in
-                    Magic. It is drawn from the power of swamps and embodies the
-                    principles of parasitism and amorality (though not
-                    necessarily immorality). The mana symbol for Black is
-                    represented by a skull. On the color pie, it is the ally of
-                    blue and red, and the enemy of white and green. Black seeks
-                    power through ruthlessness or opportunity.
+                    <span> {black[1].slice(0, 5)}</span>
+                    {black[1].slice(5)}
                   </h2>
-
                   <img
                     src={Swamp}
                     alt="swamp"
@@ -373,43 +356,67 @@ const Home = () => {
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
-      <section className="forest-path">
+      <section className="page">
         <Parallax className="parallax" bgImage={mainForest} strength={800}>
-          <div className="content-container">
-            <div className="forest">
-              <img src={Forest} alt="forest" />
-            </div>
-          </div>
+          {!active ? (
+            <Modal
+              active={active}
+              imgSrc={Forest}
+              onClick={() => setActive(true)}
+            />
+          ) : (
+            <article
+              className={active ? 'wrapper section-padding' : 'none'}
+            ></article>
+          )}
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
-      <section className="plains-path">
+      <section className="page">
         <Parallax className="parallax" bgImage={mainPlains} strength={800}>
-          <div className="content-container">
-            <div className="plains">
-              <img src={Plains} alt="plains" />
-            </div>
-          </div>
+          {!active ? (
+            <Modal
+              active={active}
+              imgSrc={Plains}
+              onClick={() => setActive(true)}
+            />
+          ) : (
+            <article
+              className={active ? 'wrapper section-padding' : 'none'}
+            ></article>
+          )}
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
-      <section className="mountain-path">
+      <section className="page">
         <Parallax className="parallax" bgImage={mainMountains} strength={800}>
-          <div className="content-container">
-            <div className="mountain">
-              <img src={Mountain} alt="mountain" />
-            </div>
-          </div>
+          {!active ? (
+            <Modal
+              active={active}
+              imgSrc={Mountain}
+              onClick={() => setActive(true)}
+            />
+          ) : (
+            <article
+              className={active ? 'wrapper section-padding' : 'none'}
+            ></article>
+          )}
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
-      <section className="island-path">
+      <section className="page">
         <Parallax className="parallax" bgImage={mainIsland} strength={800}>
-          <div className="content-container">
-            <div className="island">
-              <img src={Island} alt="island" />
-            </div>
-          </div>
+          {!active ? (
+            <Modal
+              active={active}
+              imgSrc={Island}
+              onClick={() => setActive(true)}
+            />
+          ) : (
+            <article
+              className={active ? 'wrapper section-padding' : 'none'}
+            ></article>
+          )}
         </Parallax>
       </section>
     </main>
