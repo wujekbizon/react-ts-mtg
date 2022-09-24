@@ -311,30 +311,6 @@
   .swamp-path {
     min-height: 100vh;
 
-    .modal {
-      height: calc(100vh + 50px);
-      position: relative;
-      background-color: rgba(0, 0, 0, 0.95);
-      visibility: visible;
-
-      .swamp {
-        position: absolute;
-        right: calc(50% - 60px);
-        bottom: calc(50% - 60px);
-
-        img {
-          height: 120px;
-          width: 120px;
-          cursor: pointer;
-          transition: all 0.2s ease-in;
-
-          &:hover {
-            opacity: 0.7;
-          }
-        }
-      }
-    }
-
     .black-wrapper {
       min-height: 100vh;
       display: flex;
@@ -469,9 +445,10 @@
           }
 
           img {
-            height: 100px;
-            width: 100px;
+            height: 80px;
+            width: 80px;
             cursor: pointer;
+            margin-top: 20px;
           }
         }
       }

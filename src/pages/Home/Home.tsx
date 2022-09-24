@@ -19,7 +19,7 @@ import CasinoIcon from '@mui/icons-material/Casino';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import { diceRoll } from '../../utils/diceRoll';
-import { ManaSymbol } from '../../components/';
+import { ManaSymbol, Modal } from '../../components/';
 import { facts, tribes, abilities } from '../../data/';
 
 const Home = () => {
@@ -267,11 +267,12 @@ const Home = () => {
       <section className="swamp-path">
         <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
           {!active ? (
-            <aside className={active ? 'active' : 'modal'}>
-              <div className="swamp">
-                <img src={Swamp} alt="swamp" onClick={() => setActive(true)} />
-              </div>
-            </aside>
+            <Modal
+              active={active}
+              imgSrc={Swamp}
+              onClick={() => setActive(true)}
+              altName="swamp"
+            />
           ) : (
             <article className={active ? 'black-wrapper' : 'none'}>
               <div className="black-container">

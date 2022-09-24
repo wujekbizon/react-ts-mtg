@@ -94,11 +94,6 @@ ul {
   margin: 0 1rem;
 }
 
-.active {
-  height: 0;
-  visibility: hidden;
-}
-
 .none {
   opacity: 0;
 }
