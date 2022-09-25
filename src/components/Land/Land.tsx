@@ -2,16 +2,17 @@ import './Land.scss';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import { facts } from '../../data/';
+import { useAppSelector, useAppDispatch } from '../../types/hooks';
+import {
+  openModalTribes,
+  closeModalTribes,
+  openModalAbilities,
+  closeModalAbilities,
+} from '../../state/homeSlice';
 
 interface Land {
   imgLand: string;
-  isOpenTribes: boolean;
-  isOpenAbilities: boolean;
   isActive: boolean;
-  setOpenAbilitiesFalse: () => void;
-  setOpenAbilitiesTrue: () => void;
-  setOpenTribesFalse: () => void;
-  setOpenTribesTrue: () => void;
   setActive: () => void;
   title: string;
   color: string[];
@@ -21,19 +22,18 @@ interface Land {
 
 const Land = ({
   imgLand,
-  isOpenTribes,
-  isOpenAbilities,
   isActive,
-  setOpenAbilitiesFalse,
-  setOpenAbilitiesTrue,
-  setOpenTribesFalse,
-  setOpenTribesTrue,
   setActive,
   title,
   color,
   tribes,
   abilities,
 }: Land) => {
+  const { isOpenAbilities, isOpenTribes } = useAppSelector(
+    (state) => state.home
+  );
+  const dispatch = useAppDispatch();
+
   return (
     <article className={isActive ? 'wrapper section-padding' : 'none'}>
       <div className="land-container">
@@ -48,12 +48,12 @@ const Land = ({
               {isOpenAbilities ? (
                 <ArrowCircleUpIcon
                   className="icon"
-                  onClick={setOpenAbilitiesFalse}
+                  onClick={() => dispatch(closeModalAbilities())}
                 />
               ) : (
                 <ExpandCircleDownIcon
                   className="icon"
-                  onClick={setOpenAbilitiesTrue}
+                  onClick={() => dispatch(openModalAbilities())}
                 />
               )}
               {isOpenAbilities ? (
@@ -71,12 +71,12 @@ const Land = ({
               {isOpenTribes ? (
                 <ArrowCircleUpIcon
                   className="icon"
-                  onClick={setOpenTribesFalse}
+                  onClick={() => dispatch(closeModalTribes())}
                 />
               ) : (
                 <ExpandCircleDownIcon
                   className="icon"
-                  onClick={setOpenTribesTrue}
+                  onClick={() => dispatch(openModalTribes())}
                 />
               )}
               {isOpenTribes ? (

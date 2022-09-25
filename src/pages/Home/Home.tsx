@@ -32,9 +32,6 @@ const Home = () => {
   const [activePlains, setActivePlains] = useState(false);
   const [activeMountain, setActiveMountain] = useState(false);
   const [activeIsland, setActiveIsland] = useState(false);
-  const [isOpenTribes, setIsOpenTribes] = useState(false);
-  const [isOpenAbilities, setIsOpenAbilities] = useState(false);
-
   const handleRoll = () => {
     const roll = diceRoll();
     setRoll(roll);
@@ -284,14 +281,8 @@ const Home = () => {
             />
           ) : (
             <Land
-              isOpenTribes={isOpenTribes}
-              isOpenAbilities={isOpenAbilities}
               imgLand={Swamp}
               isActive={activeSwamp}
-              setOpenAbilitiesFalse={() => setIsOpenAbilities(false)}
-              setOpenAbilitiesTrue={() => setIsOpenAbilities(true)}
-              setOpenTribesFalse={() => setIsOpenTribes(false)}
-              setOpenTribesTrue={() => setIsOpenTribes(true)}
               setActive={() => setActiveSwamp(false)}
               title="black"
               color={black}
