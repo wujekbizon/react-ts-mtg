@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { diceRoll } from '../../utils/diceRoll';
 import { facts, black, tribes, abilities } from '../../data/';
+import { useAppSelector, useAppDispatch } from '../../types/hooks';
 // Images
 import Mountain from '../../assets/images/Mountain.png';
 import Swamp from '../../assets/images/Swamp.png';
@@ -22,16 +23,21 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CasinoIcon from '@mui/icons-material/Casino';
 // components
 import { ManaSymbol, Modal, Land } from '../../components/';
+// actions
+import { setManaSymbol } from '../../state/homeSlice';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('Unknown Hero');
   const [roll, setRoll] = useState(0);
-  const [mana, setMana] = useState('');
   const [activeSwamp, setActiveSwamp] = useState(false);
   const [activeForest, setActiveForest] = useState(false);
   const [activePlains, setActivePlains] = useState(false);
   const [activeMountain, setActiveMountain] = useState(false);
   const [activeIsland, setActiveIsland] = useState(false);
+
+  const { manaSymbol, isActiveLand } = useAppSelector((state) => state.home);
+  const dispatch = useAppDispatch();
+
   const handleRoll = () => {
     const roll = diceRoll();
     setRoll(roll);
@@ -53,46 +59,54 @@ const Home = () => {
 
         <div className="container">
           <div
-            className={mana === 'red' ? `mountain mountain-active` : 'mountain'}
+            className={
+              manaSymbol === 'red' ? `mountain mountain-active` : 'mountain'
+            }
             onClick={() => {
-              setMana('red');
+              dispatch(setManaSymbol('red'));
               setActiveMountain(true);
             }}
           >
             <img src={Mountain} alt="moutain" />
           </div>
           <div
-            className={mana === 'green' ? 'forest forest-active' : 'forest'}
+            className={
+              manaSymbol === 'green' ? 'forest forest-active' : 'forest'
+            }
             onClick={() => {
-              setMana('green');
+              dispatch(setManaSymbol('green'));
               setActiveForest(true);
             }}
           >
             <img src={Forest} alt="forest" />
           </div>
           <div
-            className={mana === 'white' ? 'plains plains-active' : 'plains'}
+            className={
+              manaSymbol === 'white' ? 'plains plains-active' : 'plains'
+            }
             onClick={() => {
-              setMana('white');
+              dispatch(setManaSymbol('white'));
               setActivePlains(true);
             }}
           >
             <img src={Plains} alt="plain" />
           </div>
           <div
-            className={mana === 'blue' ? 'island island-active' : 'island'}
+            className={
+              manaSymbol === 'blue' ? 'island island-active' : 'island'
+            }
             onClick={() => {
-              setMana('blue');
+              dispatch(setManaSymbol('blue'));
               setActiveIsland(true);
             }}
           >
             <img src={Island} alt="island" />
           </div>
           <div
-            className={mana === 'black' ? 'swamp swamp-active' : 'swamp'}
+            className={manaSymbol === 'black' ? 'swamp swamp-active' : 'swamp'}
             onClick={() => {
-              setMana('black');
-              setActiveSwamp(true);
+              dispatch(setManaSymbol('black'));
+              // setActiveSwamp(true);
             }}
           >
             <img src={Swamp} alt="swamp" />
@@ -120,9 +134,11 @@ const Home = () => {
                 <div className="name-border">
                   {heroName ? <h2>{heroName}</h2> : <h2>Unknown Hero</h2>}
                   <div className="mana-cost">
-                    <ManaSymbol mana="1" />
-                    <ManaSymbol mana={mana || 'red'} />
-                    <ManaSymbol mana={mana || 'red'} />
+                    <div className="colorless-mana">
+                      <span>1</span>
+                    </div>
+                    <ManaSymbol />
+                    <ManaSymbol />
                   </div>
                 </div>
               </div>
@@ -273,12 +289,8 @@ const Home = () => {
       </article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
-          {!activeSwamp ? (
-            <Modal
-              active={activeSwamp}
-              imgSrc={Swamp}
-              onClick={() => setActiveSwamp(true)}
-            />
+          {!isActiveLand ? (
+            <Modal imgSrc={Swamp} />
           ) : (
             <Land
               imgLand={Swamp}
@@ -295,28 +307,22 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainForest} strength={800}>
-          {!activeForest ? (
-            <Modal
-              active={activeForest}
-              imgSrc={Forest}
-              onClick={() => setActiveForest(true)}
-            />
+          {!isActiveLand ? (
+            <Modal imgSrc={Forest} />
           ) : (
             <article
               className={activeForest ? 'wrapper section-padding' : 'none'}
-            ></article>
+            >
+              hello
+            </article>
           )}
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainPlains} strength={800}>
-          {!activePlains ? (
-            <Modal
-              active={activePlains}
-              imgSrc={Plains}
-              onClick={() => setActivePlains(true)}
-            />
+          {!isActiveLand ? (
+            <Modal imgSrc={Plains} />
           ) : (
             <article
               className={activePlains ? 'wrapper section-padding' : 'none'}
@@ -327,12 +333,8 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainMountains} strength={800}>
-          {!activeMountain ? (
-            <Modal
-              active={activeMountain}
-              imgSrc={Mountain}
-              onClick={() => setActiveMountain(true)}
-            />
+          {!isActiveLand ? (
+            <Modal imgSrc={Mountain} />
           ) : (
             <article
               className={activeMountain ? 'wrapper section-padding' : 'none'}
@@ -343,12 +345,8 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainIsland} strength={800}>
-          {!activeIsland ? (
-            <Modal
-              active={activeIsland}
-              imgSrc={Island}
-              onClick={() => setActiveIsland(true)}
-            />
+          {!isActiveLand ? (
+            <Modal imgSrc={Island} />
           ) : (
             <article
               className={activeIsland ? 'wrapper section-padding' : 'none'}
