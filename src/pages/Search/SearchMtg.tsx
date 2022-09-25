@@ -2,10 +2,8 @@ import './SearchMtg.scss';
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import Loader from 'react-loaders';
 import { Card, SearchBar, Collection } from '../../components';
 import { IconButton } from '@mui/material';
-import CollectionsIcon from '@mui/material';
 import { Badge } from '@mui/material';
 import { Drawer } from '@mui/material';
 import { Grid } from '@mui/material';
@@ -62,7 +60,7 @@ const SearchMtg = () => {
     setColor(target.value);
   };
 
-  if (isLoading) return <Loader type="pacman" active />;
+  if (isLoading) return <h1>Loading...</h1>;
   // if (error) return <p>Error fetching data</p>;
   return (
     <main className="search">

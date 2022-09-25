@@ -2,6 +2,7 @@ import './Home.scss';
 import { useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { diceRoll } from '../../utils/diceRoll';
+import { facts, black, tribes, abilities } from '../../data/';
 // Images
 import Mountain from '../../assets/images/Mountain.png';
 import Swamp from '../../assets/images/Swamp.png';
@@ -19,17 +20,18 @@ import Reborn from '../../assets/images/reborn.jpg';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CasinoIcon from '@mui/icons-material/Casino';
-import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 // components
-import { ManaSymbol, Modal } from '../../components/';
-import { facts, tribes, abilities, black } from '../../data/';
+import { ManaSymbol, Modal, Land } from '../../components/';
 
 const Home = () => {
   const [heroName, setHeroName] = useState('Unknown Hero');
   const [roll, setRoll] = useState(0);
   const [mana, setMana] = useState('');
-  const [active, setActive] = useState(false);
+  const [activeSwamp, setActiveSwamp] = useState(false);
+  const [activeForest, setActiveForest] = useState(false);
+  const [activePlains, setActivePlains] = useState(false);
+  const [activeMountain, setActiveMountain] = useState(false);
+  const [activeIsland, setActiveIsland] = useState(false);
   const [isOpenTribes, setIsOpenTribes] = useState(false);
   const [isOpenAbilities, setIsOpenAbilities] = useState(false);
 
@@ -57,6 +59,7 @@ const Home = () => {
             className={mana === 'red' ? `mountain mountain-active` : 'mountain'}
             onClick={() => {
               setMana('red');
+              setActiveMountain(true);
             }}
           >
             <img src={Mountain} alt="moutain" />
@@ -65,6 +68,7 @@ const Home = () => {
             className={mana === 'green' ? 'forest forest-active' : 'forest'}
             onClick={() => {
               setMana('green');
+              setActiveForest(true);
             }}
           >
             <img src={Forest} alt="forest" />
@@ -73,6 +77,7 @@ const Home = () => {
             className={mana === 'white' ? 'plains plains-active' : 'plains'}
             onClick={() => {
               setMana('white');
+              setActivePlains(true);
             }}
           >
             <img src={Plains} alt="plain" />
@@ -81,6 +86,7 @@ const Home = () => {
             className={mana === 'blue' ? 'island island-active' : 'island'}
             onClick={() => {
               setMana('blue');
+              setActiveIsland(true);
             }}
           >
             <img src={Island} alt="island" />
@@ -89,6 +95,7 @@ const Home = () => {
             className={mana === 'black' ? 'swamp swamp-active' : 'swamp'}
             onClick={() => {
               setMana('black');
+              setActiveSwamp(true);
             }}
           >
             <img src={Swamp} alt="swamp" />
@@ -269,104 +276,43 @@ const Home = () => {
       </article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
-          {!active ? (
+          {!activeSwamp ? (
             <Modal
-              active={active}
+              active={activeSwamp}
               imgSrc={Swamp}
-              onClick={() => setActive(true)}
+              onClick={() => setActiveSwamp(true)}
             />
           ) : (
-            <article className={active ? 'wrapper section-padding' : 'none'}>
-              <div className="black-container">
-                <div className="black-features">
-                  <div className="black-gameplay">
-                    <h3>Gameplay</h3>
-                    <p>{black[0]}</p>
-                  </div>
-                  <div className="black-bottom">
-                    <div className="black-abilities">
-                      <h3>Abilities</h3>
-                      {isOpenAbilities ? (
-                        <ArrowCircleUpIcon
-                          className="icon"
-                          onClick={() => setIsOpenAbilities(false)}
-                        />
-                      ) : (
-                        <ExpandCircleDownIcon
-                          className="icon"
-                          onClick={() => setIsOpenAbilities(true)}
-                        />
-                      )}
-                      {isOpenAbilities ? (
-                        <ul className={isOpenAbilities ? 'open' : ''}>
-                          {abilities.map((a) => (
-                            <li key={a}>{a}</li>
-                          ))}
-                        </ul>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                    <div className="black-tribes">
-                      <h3>Creature Tribes</h3>
-                      {isOpenTribes ? (
-                        <ArrowCircleUpIcon
-                          className="icon"
-                          onClick={() => setIsOpenTribes(false)}
-                        />
-                      ) : (
-                        <ExpandCircleDownIcon
-                          className="icon"
-                          onClick={() => setIsOpenTribes(true)}
-                        />
-                      )}
-                      {isOpenTribes ? (
-                        <ul className={isOpenTribes ? 'open' : ''}>
-                          {tribes.map((tribe) => (
-                            <li key={tribe}>{tribe}</li>
-                          ))}
-                        </ul>
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="black-info">
-                  <h1>BLACK</h1>
-                  <h2>
-                    <span> {black[1].slice(0, 5)}</span>
-                    {black[1].slice(5)}
-                  </h2>
-                  <img
-                    src={Swamp}
-                    alt="swamp"
-                    onClick={() => setActive(false)}
-                  />
-                </div>
-              </div>
-              <div className="facts-container">
-                <div className="facts">
-                  <h4>* FACTS *</h4>
-                  <p>{facts[2].text}</p>
-                </div>
-              </div>
-            </article>
+            <Land
+              isOpenTribes={isOpenTribes}
+              isOpenAbilities={isOpenAbilities}
+              imgLand={Swamp}
+              isActive={activeSwamp}
+              setOpenAbilitiesFalse={() => setIsOpenAbilities(false)}
+              setOpenAbilitiesTrue={() => setIsOpenAbilities(true)}
+              setOpenTribesFalse={() => setIsOpenTribes(false)}
+              setOpenTribesTrue={() => setIsOpenTribes(true)}
+              setActive={() => setActiveSwamp(false)}
+              title="black"
+              color={black}
+              tribes={tribes}
+              abilities={abilities}
+            />
           )}
         </Parallax>
       </section>
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainForest} strength={800}>
-          {!active ? (
+          {!activeForest ? (
             <Modal
-              active={active}
+              active={activeForest}
               imgSrc={Forest}
-              onClick={() => setActive(true)}
+              onClick={() => setActiveForest(true)}
             />
           ) : (
             <article
-              className={active ? 'wrapper section-padding' : 'none'}
+              className={activeForest ? 'wrapper section-padding' : 'none'}
             ></article>
           )}
         </Parallax>
@@ -374,15 +320,15 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainPlains} strength={800}>
-          {!active ? (
+          {!activePlains ? (
             <Modal
-              active={active}
+              active={activePlains}
               imgSrc={Plains}
-              onClick={() => setActive(true)}
+              onClick={() => setActivePlains(true)}
             />
           ) : (
             <article
-              className={active ? 'wrapper section-padding' : 'none'}
+              className={activePlains ? 'wrapper section-padding' : 'none'}
             ></article>
           )}
         </Parallax>
@@ -390,15 +336,15 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainMountains} strength={800}>
-          {!active ? (
+          {!activeMountain ? (
             <Modal
-              active={active}
+              active={activeMountain}
               imgSrc={Mountain}
-              onClick={() => setActive(true)}
+              onClick={() => setActiveMountain(true)}
             />
           ) : (
             <article
-              className={active ? 'wrapper section-padding' : 'none'}
+              className={activeMountain ? 'wrapper section-padding' : 'none'}
             ></article>
           )}
         </Parallax>
@@ -406,15 +352,15 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainIsland} strength={800}>
-          {!active ? (
+          {!activeIsland ? (
             <Modal
-              active={active}
+              active={activeIsland}
               imgSrc={Island}
-              onClick={() => setActive(true)}
+              onClick={() => setActiveIsland(true)}
             />
           ) : (
             <article
-              className={active ? 'wrapper section-padding' : 'none'}
+              className={activeIsland ? 'wrapper section-padding' : 'none'}
             ></article>
           )}
         </Parallax>
