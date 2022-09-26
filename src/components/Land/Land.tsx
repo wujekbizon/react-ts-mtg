@@ -1,7 +1,6 @@
 import './Land.scss';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-import { facts } from '../../data/';
 import { useAppSelector, useAppDispatch } from '../../types/hooks';
 import {
   openModalTribes,
@@ -18,6 +17,7 @@ interface LandProps {
   color: string[];
   tribes: string[];
   abilities: string[];
+  facts: string[];
 }
 
 const Land = ({
@@ -28,6 +28,7 @@ const Land = ({
   color,
   tribes,
   abilities,
+  facts,
 }: LandProps) => {
   const { isOpenAbilities, isOpenTribes } = useAppSelector(
     (state) => state.home
@@ -103,7 +104,7 @@ const Land = ({
       <div className="facts-container">
         <div className="facts">
           <h4>* FACTS *</h4>
-          <p>{facts[2].text}</p>
+          <p>{facts[0]}</p>
         </div>
       </div>
     </article>

@@ -2,7 +2,7 @@ import './Home.scss';
 import { useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { diceRoll } from '../../utils/diceRoll';
-import { facts, black, tribes, abilities } from '../../data/';
+import { facts, gameplay, tribes, abilities } from '../../data/';
 import { useAppSelector, useAppDispatch } from '../../types/hooks';
 // Images
 import Mountain from '../../assets/images/Mountain.png';
@@ -247,8 +247,9 @@ const Home = () => {
           </div>
           <div className="facts">
             <h5>* FACTS *</h5>
-            <p>{facts[0].text}</p>
-            <p>{facts[1].text}</p>
+            {facts.general.map((f, index) => (
+              <p key={index}>{f}</p>
+            ))}
             <span className="roll">
               Try a Roll
               <CasinoIcon onClick={handleRoll} />
@@ -296,9 +297,10 @@ const Home = () => {
               isActive={activeSwamp}
               setActive={() => setActiveSwamp(false)}
               title="black"
-              color={black}
-              tribes={tribes}
-              abilities={abilities}
+              color={gameplay.black}
+              tribes={tribes.black}
+              abilities={abilities.black}
+              facts={facts.black}
             />
           )}
         </Parallax>

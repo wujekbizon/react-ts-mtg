@@ -1,6 +1,3 @@
-import { tribes } from './black';
-import { facts } from './facts';
-import { abilities } from './black';
-import { black } from './black';
+import { tribes, facts, abilities, gameplay } from './data';
 
-export { tribes, facts, abilities, black };
+export { tribes, facts, abilities, gameplay };
