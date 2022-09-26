@@ -10,7 +10,7 @@ import {
   closeModalAbilities,
 } from '../../state/homeSlice';
 
-interface Land {
+interface LandProps {
   imgLand: string;
   isActive: boolean;
   setActive: () => void;
@@ -28,7 +28,7 @@ const Land = ({
   color,
   tribes,
   abilities,
-}: Land) => {
+}: LandProps) => {
   const { isOpenAbilities, isOpenTribes } = useAppSelector(
     (state) => state.home
   );

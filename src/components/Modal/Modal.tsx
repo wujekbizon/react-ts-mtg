@@ -1,5 +1,4 @@
 import './Modal.scss';
-import { useAppSelector, useAppDispatch } from '../../types/hooks';
 
 type Props = {
   imgSrc: string;

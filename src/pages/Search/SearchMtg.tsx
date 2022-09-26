@@ -1,6 +1,6 @@
 import './SearchMtg.scss';
 import { useState, useEffect } from 'react';
-import { useQuery } from 'react-query';
+// import { useQuery } from 'react-query';
 import axios from 'axios';
 import { Card, SearchBar, Collection } from '../../components';
 import { IconButton } from '@mui/material';
@@ -8,8 +8,8 @@ import { Badge } from '@mui/material';
 import { Drawer } from '@mui/material';
 import { Grid } from '@mui/material';
 import { MtgCards } from '../../types/MtgCards';
-import { getAllCards } from '../../FetchCards';
-import paginate from '../../utils/utils';
+// import { getAllCards } from '../../FetchCards';
+// import paginate from '../../utils/utils';
 
 const SearchMtg = () => {
   // const { data, isLoading, status, error } = useQuery<MtgCards[]>(

@@ -258,8 +258,8 @@ const Home = () => {
       </section>
       <article className="divider linear-gradient ">
         <h2>
-          {heroName} started his adventure , he was confused but decide not to
-          give up.
+          {heroName ? heroName : 'Unknown Hero'} started his adventure , he was
+          confused but decide not to give up.
           <br />
           He left behind the burning tree. Didn't look back, he couldn't after
           what he did.
