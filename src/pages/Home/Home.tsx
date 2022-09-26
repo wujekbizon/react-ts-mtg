@@ -35,7 +35,7 @@ const Home = () => {
   const [activeMountain, setActiveMountain] = useState(false);
   const [activeIsland, setActiveIsland] = useState(false);
 
-  const { manaSymbol, isActiveLand } = useAppSelector((state) => state.home);
+  const { manaSymbol } = useAppSelector((state) => state.home);
   const dispatch = useAppDispatch();
 
   const handleRoll = () => {
@@ -64,7 +64,6 @@ const Home = () => {
             }
             onClick={() => {
               dispatch(setManaSymbol('red'));
-              setActiveMountain(true);
             }}
           >
             <img src={Mountain} alt="moutain" />
@@ -75,7 +74,6 @@ const Home = () => {
             }
             onClick={() => {
               dispatch(setManaSymbol('green'));
-              setActiveForest(true);
             }}
           >
             <img src={Forest} alt="forest" />
@@ -86,7 +84,6 @@ const Home = () => {
             }
             onClick={() => {
               dispatch(setManaSymbol('white'));
-              setActivePlains(true);
             }}
           >
             <img src={Plains} alt="plain" />
@@ -97,7 +94,6 @@ const Home = () => {
             }
             onClick={() => {
               dispatch(setManaSymbol('blue'));
-              setActiveIsland(true);
             }}
           >
             <img src={Island} alt="island" />
@@ -106,7 +102,6 @@ const Home = () => {
             className={manaSymbol === 'black' ? 'swamp swamp-active' : 'swamp'}
             onClick={() => {
               dispatch(setManaSymbol('black'));
-              // setActiveSwamp(true);
             }}
           >
             <img src={Swamp} alt="swamp" />
@@ -289,8 +284,12 @@ const Home = () => {
       </article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainSwamps} strength={800}>
-          {!isActiveLand ? (
-            <Modal imgSrc={Swamp} />
+          {!activeSwamp ? (
+            <Modal
+              imgSrc={Swamp}
+              isActive={activeSwamp}
+              setActive={() => setActiveSwamp(true)}
+            />
           ) : (
             <Land
               imgLand={Swamp}
@@ -307,8 +306,12 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainForest} strength={800}>
-          {!isActiveLand ? (
-            <Modal imgSrc={Forest} />
+          {!activeForest ? (
+            <Modal
+              imgSrc={Forest}
+              isActive={activeForest}
+              setActive={() => setActiveForest(true)}
+            />
           ) : (
             <article
               className={activeForest ? 'wrapper section-padding' : 'none'}
@@ -321,8 +324,12 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainPlains} strength={800}>
-          {!isActiveLand ? (
-            <Modal imgSrc={Plains} />
+          {!activePlains ? (
+            <Modal
+              imgSrc={Plains}
+              isActive={activePlains}
+              setActive={() => setActivePlains(true)}
+            />
           ) : (
             <article
               className={activePlains ? 'wrapper section-padding' : 'none'}
@@ -333,8 +340,12 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainMountains} strength={800}>
-          {!isActiveLand ? (
-            <Modal imgSrc={Mountain} />
+          {!activeMountain ? (
+            <Modal
+              imgSrc={Mountain}
+              isActive={activeMountain}
+              setActive={() => setActiveMountain(true)}
+            />
           ) : (
             <article
               className={activeMountain ? 'wrapper section-padding' : 'none'}
@@ -345,8 +356,12 @@ const Home = () => {
       <article className="divider bg-dark"></article>
       <section className="page">
         <Parallax className="parallax" bgImage={mainIsland} strength={800}>
-          {!isActiveLand ? (
-            <Modal imgSrc={Island} />
+          {!activeIsland ? (
+            <Modal
+              imgSrc={Island}
+              isActive={activeIsland}
+              setActive={() => setActiveIsland(true)}
+            />
           ) : (
             <article
               className={activeIsland ? 'wrapper section-padding' : 'none'}

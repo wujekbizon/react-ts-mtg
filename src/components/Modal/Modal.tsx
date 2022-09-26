@@ -1,23 +1,17 @@
 import './Modal.scss';
 import { useAppSelector, useAppDispatch } from '../../types/hooks';
-import { activateLand, setManaSymbol } from '../../state/homeSlice';
 
 type Props = {
   imgSrc: string;
+  isActive: boolean;
+  setActive: () => void;
 };
 
-const Modal = ({ imgSrc }: Props) => {
-  const { isActiveLand } = useAppSelector((state) => state.home);
-  const dispatch = useAppDispatch();
-
+const Modal = ({ imgSrc, isActive, setActive }: Props) => {
   return (
-    <aside className={isActiveLand ? 'active' : 'modal'}>
+    <aside className={isActive ? 'active' : 'modal'}>
       <div className="mana-img">
-        <img
-          src={imgSrc}
-          alt="mana-symbol"
-          onClick={() => dispatch(activateLand())}
-        />
+        <img src={imgSrc} alt="mana-symbol" onClick={setActive} />
       </div>
     </aside>
   );

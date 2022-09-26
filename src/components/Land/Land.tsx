@@ -8,7 +8,6 @@ import {
   closeModalTribes,
   openModalAbilities,
   closeModalAbilities,
-  deactivateLand,
 } from '../../state/homeSlice';
 
 interface Land {
@@ -30,13 +29,13 @@ const Land = ({
   tribes,
   abilities,
 }: Land) => {
-  const { isOpenAbilities, isOpenTribes, isActiveLand } = useAppSelector(
+  const { isOpenAbilities, isOpenTribes } = useAppSelector(
     (state) => state.home
   );
   const dispatch = useAppDispatch();
 
   return (
-    <article className={isActiveLand ? 'wrapper section-padding' : 'none'}>
+    <article className={isActive ? 'wrapper section-padding' : 'none'}>
       <div className="land-container">
         <div className="land-features">
           <div className="land-gameplay">
@@ -98,11 +97,7 @@ const Land = ({
             <span>{color[1].slice(0, 5)}</span>
             {color[1].slice(5)}
           </h2>
-          <img
-            src={imgLand}
-            alt="mana"
-            onClick={() => dispatch(deactivateLand())}
-          />
+          <img src={imgLand} alt="mana" onClick={setActive} />
         </div>
       </div>
       <div className="facts-container">
