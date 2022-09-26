@@ -315,11 +315,16 @@ const Home = () => {
               setActive={() => setActiveForest(true)}
             />
           ) : (
-            <article
-              className={activeForest ? 'wrapper section-padding' : 'none'}
-            >
-              hello
-            </article>
+            <Land
+              imgLand={Forest}
+              isActive={activeForest}
+              setActive={() => setActiveForest(false)}
+              title="green"
+              color={gameplay.green}
+              tribes={tribes.green}
+              abilities={abilities.green}
+              facts={facts.green}
+            />
           )}
         </Parallax>
       </section>
@@ -333,9 +338,16 @@ const Home = () => {
               setActive={() => setActivePlains(true)}
             />
           ) : (
-            <article
-              className={activePlains ? 'wrapper section-padding' : 'none'}
-            ></article>
+            <Land
+              imgLand={Plains}
+              isActive={activePlains}
+              setActive={() => setActivePlains(false)}
+              title="white"
+              color={gameplay.white}
+              tribes={tribes.white}
+              abilities={abilities.white}
+              facts={facts.white}
+            />
           )}
         </Parallax>
       </section>
