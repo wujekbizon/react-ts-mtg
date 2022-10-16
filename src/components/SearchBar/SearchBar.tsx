@@ -1,17 +1,13 @@
-import { useState } from 'react';
 import './SearchBar.scss';
 
-const SearchBar = () => {
-  const [query, setQuery] = useState('');
+type Props = {
+  query: string;
+  handleChange: (e: React.FormEvent<EventTarget>) => void;
+};
 
+const SearchBar = ({ query, handleChange }: Props) => {
   const onSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-  };
-
-  const handleChange = (e: React.FormEvent<EventTarget>): void => {
-    let target = e.target as HTMLInputElement;
-    console.log(e.target);
-    setQuery(target.value);
   };
 
   return (
