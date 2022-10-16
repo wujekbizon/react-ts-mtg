@@ -1,17 +1,25 @@
 import './SearchMtg.scss';
 import { useState, useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../../types/hooks';
 // import { useQuery } from 'react-query';
-import axios from 'axios';
-import { Card, SearchBar, Collection } from '../../components';
+import {
+  Card,
+  SearchBar,
+  Collection,
+  ManaSymbol,
+  Button,
+} from '../../components';
 import { IconButton } from '@mui/material';
 import { Badge } from '@mui/material';
 import { Drawer } from '@mui/material';
 import { Grid } from '@mui/material';
 import { MtgCards } from '../../types/MtgCards';
-// import { getAllCards } from '../../FetchCards';
-// import paginate from '../../utils/utils';
+import { getAllCards } from '../../FetchCards';
+import { setManaSymbol } from '../../state/homeSlice';
 
 const SearchMtg = () => {
+  const { manaSymbol } = useAppSelector((state) => state.home);
+  const dispatch = useAppDispatch();
   // const { data, isLoading, status, error } = useQuery<MtgCards[]>(
   //   'blue',
   //   getAllCards
@@ -20,25 +28,31 @@ const SearchMtg = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [cardsData, setCardsData] = useState<MtgCards[]>([]);
   const [page, setPage] = useState(1);
-  const [color, setColor] = useState('red');
+  const [color, setColor] = useState(manaSymbol || 'red');
 
   useEffect(() => {
-    const fetchCards = async () => {
-      setIsLoading(true);
-      const { data } = await axios.get(
-        `https://api.scryfall.com/cards/search?q=c%3A${color}`,
-        {
-          params: {
-            page,
-          },
-        }
-      );
-      setIsLoading(false);
-      setCardsData(data.data);
-    };
+    // const fetchCards = async () => {
+    //   setIsLoading(true);
+    //   const { data } = await axios.get(
+    //     `https://api.scryfall.com/cards/search?q=c%3A${color}`,
+    //     {
+    //       params: {
+    //         page,
+    //       },
+    //     }
+    //   );
+    //   setIsLoading(false);
+    //   setCardsData(data.data);
+    // };
 
-    fetchCards();
-  }, [page, color]);
+    const fetch = async () => {
+      const resp = await getAllCards(page, manaSymbol);
+      setIsLoading(false);
+      console.log(resp);
+      setCardsData(resp);
+    };
+    fetch();
+  }, [page, manaSymbol]);
 
   const handleAddToDeck = (clickedCard: MtgCards) => {};
 
@@ -47,12 +61,16 @@ const SearchMtg = () => {
   };
 
   const prevPage = () => {
-    if (page < 1) {
+    if (page <= 1) {
       setPage(1);
     } else {
       setPage(page - 1);
     }
   };
+
+  useEffect(() => {
+    dispatch(setManaSymbol(color));
+  }, [color, dispatch]);
 
   const handleChange = (e: React.FormEvent<EventTarget>): void => {
     let target = e.target as HTMLInputElement;
@@ -63,19 +81,26 @@ const SearchMtg = () => {
   if (isLoading) return <h1>Loading...</h1>;
   // if (error) return <p>Error fetching data</p>;
   return (
-    <main className="search">
-      <div className="inner-flex">
+    <main className="search background">
+      <div className="search-container">
         <SearchBar />
-        <button onClick={prevPage}>Prev</button>
-        <button onClick={nextPage}>Next</button>
-        <select value={color} name="color" id="color" onChange={handleChange}>
-          <option value="red">red</option>
-          <option value="white">white</option>
-          <option value="green">green</option>
-          <option value="blue">blue</option>
-          <option value="black">black</option>
-        </select>
+        <div className="btn-contanier">
+          <Button onClick={prevPage}>Prev</Button>
+          <span>{page}</span>
+          <Button onClick={nextPage}>Next</Button>
+        </div>
 
+        <div className="select-container">
+          <select value={color} name="color" id="color" onChange={handleChange}>
+            <option value="red">red</option>
+            <option value="white">white</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+            <option value="black">black</option>
+          </select>
+        </div>
+      </div>
+      <div className="drawer">
         <Drawer
           anchor="right"
           open={cartOpen}
@@ -84,9 +109,12 @@ const SearchMtg = () => {
           <Collection />
         </Drawer>
         <IconButton className="icon-button" onClick={() => setCartOpen(true)}>
-          <Badge></Badge>
+          <Badge>
+            <ManaSymbol />
+          </Badge>
         </IconButton>
-
+      </div>
+      <div className="grid-contaniner">
         <Grid container spacing={3}>
           {cardsData?.map((card) => {
             return (

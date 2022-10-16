@@ -12,6 +12,40 @@
     flex-direction: column;
     justify-content: center;
 
+    background: -moz-linear-gradient(
+      180deg,
+      rgba(67, 30, 63, 1) 0%,
+      rgba(29, 28, 37, 1) 100%
+    );
+
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-linear-gradient(
+      180deg,
+      rgba(67, 30, 63, 1) 0%,
+      rgba(29, 28, 37, 1) 100%
+    );
+
+    /* opera 11.10+ */
+    background: -o-linear-gradient(
+      180deg,
+      rgba(67, 30, 63, 1) 0%,
+      rgba(29, 28, 37, 1) 100%
+    );
+
+    /* ie 10+ */
+    background: -ms-linear-gradient(
+      180deg,
+      rgba(67, 30, 63, 1) 0%,
+      rgba(29, 28, 37, 1) 100%
+    );
+
+    /* global 94%+ browsers support */
+    background: linear-gradient(
+      180deg,
+      rgba(67, 30, 63, 1) 0%,
+      rgba(29, 28, 37, 1) 100%
+    );
+
     .hero-title {
       display: flex;
       flex-direction: column;

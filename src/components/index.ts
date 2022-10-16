@@ -6,6 +6,7 @@ import Sidebar from './Sidebar/Sidebar';
 import ManaSymbol from './Mana/ManaSymbol';
 import Modal from './Modal/Modal';
 import Land from './Land/Land';
+import Button from './Button/Button';
 
 export {
   AnimatedLetters,
@@ -16,4 +17,5 @@ export {
   ManaSymbol,
   Modal,
   Land,
+  Button,
 };

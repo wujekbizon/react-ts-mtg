@@ -17,8 +17,13 @@ const SearchBar = () => {
   return (
     <div className="search-bar">
       <form onSubmit={onSubmit} className="form-control">
-        <label htmlFor="search">Search for a card</label>
-        <input type="text" id="search" value={query} onChange={handleChange} />
+        <input
+          type="text"
+          id="search"
+          value={query}
+          onChange={handleChange}
+          placeholder="Search for a card"
+        />
       </form>
     </div>
   );

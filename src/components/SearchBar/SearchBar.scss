@@ -1,26 +1,28 @@
 .search-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   border-radius: 10px;
+  flex: 2;
 
   .form-control {
     display: flex;
     flex-direction: column;
-    width: 40%;
-
-    label {
-      color: #ee5a24;
-      font-size: 15px;
-    }
+    align-items: center;
+    width: 100%;
 
     input {
-      width: 100%;
+      width: 80%;
       height: 30px;
       font-size: 15px;
       outline: none;
       border: none;
       border-radius: 5px;
+
+      &::placeholder {
+        color: #ee5a24;
+        font-size: 16px;
+      }
     }
   }
 }
