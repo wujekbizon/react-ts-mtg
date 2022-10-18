@@ -10,22 +10,56 @@
     justify-content: center;
     padding: 50px 30px;
 
-    .btn-contanier {
-      flex: 1;
+    .select-container {
+      flex: 2;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-evenly;
 
-      span {
+      .search-title {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        font-size: 20px;
+
+        svg {
+          width: 18px;
+          height: 18px;
+          margin-right: 10px;
+        }
+      }
+
+      .input-container {
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 25px;
+          height: 25px;
+          border: 1px solid #3b1260;
+          outline: none;
+        }
+      }
+
+      select {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        appearance: none;
       }
     }
+  }
 
-    .select-container {
-      flex: 1;
+  .btn-contanier {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
     }
   }
 

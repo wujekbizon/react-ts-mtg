@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../types/hooks';
 import { setManaSymbol } from '../../state/homeSlice';
 import { useFetch } from '../../hooks/useFetch';
+import { inputs } from '../../data';
 import {
   Card,
   SearchBar,
@@ -20,7 +21,7 @@ const SearchMtg = () => {
   const { manaSymbol } = useAppSelector((state) => state.home);
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
-  const [color, setColor] = useState(manaSymbol || 'red');
+  const [color, setColor] = useState(manaSymbol || 'colorless');
   const [query, setQuery] = useState('');
   const { loading, data, error } = useFetch(color, page, query);
   const [cartOpen, setCartOpen] = useState(false);
@@ -64,26 +65,57 @@ const SearchMtg = () => {
     <main className="search background">
       <div className="search-container">
         <SearchBar query={query} handleChange={handleInputChange} />
-        <div className="btn-contanier">
-          <Button onClick={prevPage}>Prev</Button>
-          <span>{page}</span>
-          <Button onClick={nextPage}>Next</Button>
-        </div>
 
         <div className="select-container">
-          <select
+          <div className="search-title">
+            <svg
+              focusable="false"
+              aria-hidden="true"
+              width="95"
+              height="88"
+              viewBox="0 0 95 88"
+            >
+              <g fill="#FFF" fillRule="evenodd">
+                <path d="M47 30c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15zm0-7c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zM80 53c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15zm0-7c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zM65 88c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15zm0-7c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zM28 88c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15zm0-7c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zM15 54c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15zm0-7c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"></path>
+              </g>
+            </svg>
+            <h4>Search by Mana Color</h4>
+          </div>
+          {inputs.map((input) => {
+            const { id, value, title } = input;
+            return (
+              <div className="input-container" key={id}>
+                <input
+                  type="checkbox"
+                  value={value}
+                  onChange={handleSelectChange}
+                />
+
+                <ManaSymbol />
+                {title}
+              </div>
+            );
+          })}
+
+          {/* <select
             value={color}
             name="color"
             id="color"
             onChange={handleSelectChange}
+            style={{ backgroundColor: color }}
           >
-            <option value="red">red</option>
-            <option value="white">white</option>
-            <option value="green">green</option>
-            <option value="blue">blue</option>
-            <option value="black">black</option>
-          </select>
+            <option value="red" style={{ backgroundColor: 'red' }}></option>
+            <option value="white" style={{ backgroundColor: 'white' }}></option>
+            <option value="green" style={{ backgroundColor: 'green' }}></option>
+            <option value="blue" style={{ backgroundColor: 'blue' }}></option>
+            <option value="black" style={{ backgroundColor: 'black' }}></option>
+          </select> */}
         </div>
+      </div>
+      <div className="btn-contanier">
+        <Button onClick={prevPage}>Prev</Button>
+        <span>{page}</span>
+        <Button onClick={nextPage}>Next</Button>
       </div>
       <div className="drawer">
         <Drawer

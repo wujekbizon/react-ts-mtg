@@ -1,3 +1,3 @@
 import { tribes, facts, abilities, gameplay } from './data';
-
-export { tribes, facts, abilities, gameplay };
+import { inputs } from './checkbox';
+export { tribes, facts, abilities, gameplay, inputs };
