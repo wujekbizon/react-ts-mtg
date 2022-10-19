@@ -8,7 +8,7 @@ type Props = {
 
 const Modal = ({ imgSrc, isActive, setActive }: Props) => {
   return (
-    <aside className={isActive ? 'active' : 'modal'}>
+    <aside className={isActive ? 'active-modal' : 'modal'}>
       <div className="mana-img">
         <img src={imgSrc} alt="mana-symbol" onClick={setActive} />
       </div>

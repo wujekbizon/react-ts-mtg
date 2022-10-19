@@ -82,34 +82,24 @@ const SearchMtg = () => {
             <h4>Search by Mana Color</h4>
           </div>
           {inputs.map((input) => {
-            const { id, value, title } = input;
+            const { id, value, title, imgSrc } = input;
             return (
               <div className="input-container" key={id}>
                 <input
                   type="checkbox"
                   value={value}
                   onChange={handleSelectChange}
+                  className={color === value ? 'active-input input' : 'input'}
                 />
 
-                <ManaSymbol />
+                <img src={imgSrc} alt="mana" />
                 {title}
               </div>
             );
           })}
-
-          {/* <select
-            value={color}
-            name="color"
-            id="color"
-            onChange={handleSelectChange}
-            style={{ backgroundColor: color }}
-          >
-            <option value="red" style={{ backgroundColor: 'red' }}></option>
-            <option value="white" style={{ backgroundColor: 'white' }}></option>
-            <option value="green" style={{ backgroundColor: 'green' }}></option>
-            <option value="blue" style={{ backgroundColor: 'blue' }}></option>
-            <option value="black" style={{ backgroundColor: 'black' }}></option>
-          </select> */}
+          <div>
+            <Button>Advanced Search</Button>
+          </div>
         </div>
       </div>
       <div className="btn-contanier">

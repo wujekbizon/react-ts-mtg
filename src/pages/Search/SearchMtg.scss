@@ -1,3 +1,4 @@
+@import '../../App.scss';
 .search {
   min-height: calc(100vh - 80px);
   padding: 50px;
@@ -31,20 +32,75 @@
         display: flex;
         align-items: center;
 
-        input {
-          width: 25px;
-          height: 25px;
-          border: 1px solid #3b1260;
-          outline: none;
+        .active-input:checked:after {
+          background: linear-gradient(
+            135deg,
+            rgba(67, 30, 63, 1) 0%,
+            rgba(29, 28, 37, 1) 100%
+          );
+          color: white;
         }
-      }
 
-      select {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        cursor: pointer;
-        appearance: none;
+        .input:before {
+          position: relative;
+          top: -5px;
+          display: block;
+          width: 22px;
+          height: 22px;
+          background: #fff;
+          border: 1px solid rgba(29, 28, 37, 1);
+          content: '';
+          cursor: pointer;
+        }
+
+        .input:after {
+          position: relative;
+          display: block;
+          left: 1px;
+          top: -28px;
+          width: 20px;
+          height: 20px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: #b3b3b3 #dcddde #dcddde #b3b3b3;
+          content: '';
+          background-image: linear-gradient(135deg, #b1b6be 0%, #fff 100%);
+          background-repeat: no-repeat;
+          background-position: center;
+          cursor: pointer;
+        }
+
+        .input:checked:after {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          content: '✓';
+        }
+
+        .input:not(:disabled):hover:after {
+          background: linear-gradient(
+            135deg,
+            rgba(67, 30, 63, 1) 0%,
+            rgba(29, 28, 37, 1) 100%
+          );
+          border-color: #85a9bb #92c2da #92c2da #85a9bb;
+        }
+
+        .input:not(:disabled):checked:hover:after {
+          background: linear-gradient(
+            135deg,
+            rgba(67, 30, 63, 1) 0%,
+            rgba(29, 28, 37, 1) 100%
+          );
+          color: white;
+        }
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin-left: 15px;
+          margin-right: 10px;
+        }
       }
     }
   }
