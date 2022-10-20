@@ -1,3 +1,11 @@
+export interface Data {
+  data: MtgCards[];
+  has_more: boolean;
+  next_page: string;
+  object: string;
+  total_cards: number;
+}
+
 export type MtgCards = {
   artist: string;
   cmc: number;

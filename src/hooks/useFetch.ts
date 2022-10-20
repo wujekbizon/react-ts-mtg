@@ -1,28 +1,31 @@
 import { useState, useEffect } from 'react';
-import { MtgCards } from '../types/MtgCards';
 import axios from 'axios';
+import { useAppSelector, useAppDispatch } from '../types/hooks';
+import {
+  getCardsStart,
+  getCardsSuccess,
+  getCardsFailure,
+} from '../state/cardsSlice';
 
-export const useFetch = (color?: string, page?: number, query?: string) => {
+export const useFetch = (color?: string) => {
+  const { searchQuery, page } = useAppSelector((state) => state.home);
+  const { next_page } = useAppSelector((state) => state.cards.dataList);
+  const dispatch = useAppDispatch();
   const urlSearchByColor = `https://api.scryfall.com/cards/search?q=c%3A${color}`;
-  const urlQuery = `https://api.scryfall.com/cards/search?q=${query}`;
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<MtgCards[]>([]);
-  const [error, setError] = useState('');
+  const urlQuery = `https://api.scryfall.com/cards/search?q=${searchQuery}`;
 
   const getData = async () => {
-    setLoading(true);
+    dispatch(getCardsStart());
     try {
       const { data } = await axios(urlSearchByColor, {
         params: {
           page,
         },
       });
-
-      setData(data.data);
-      setLoading(false);
+      dispatch(getCardsSuccess(data));
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
+        dispatch(getCardsFailure(error.message));
       } else {
         console.log('Unexpected error', error);
       }
@@ -30,14 +33,13 @@ export const useFetch = (color?: string, page?: number, query?: string) => {
   };
 
   const getDataByQuery = async () => {
-    // setLoading(true);
+    dispatch(getCardsStart());
     try {
       const { data } = await axios(urlQuery);
-      setData(data.data);
-      // setLoading(false);
+      dispatch(getCardsSuccess(data));
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error.message);
+        dispatch(getCardsFailure(error.message));
       } else {
         console.log('Unexpected error', error);
       }
@@ -53,7 +55,7 @@ export const useFetch = (color?: string, page?: number, query?: string) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (query) {
+      if (searchQuery) {
         getDataByQuery();
       }
     }, 500);
@@ -62,7 +64,5 @@ export const useFetch = (color?: string, page?: number, query?: string) => {
       clearTimeout(timer);
     };
     // eslint-disable-next-line
-  }, [query]);
-
-  return { loading, data, error };
+  }, [searchQuery]);
 };

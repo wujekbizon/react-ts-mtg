@@ -19,11 +19,14 @@ import { MtgCards } from '../../types/MtgCards';
 
 const SearchMtg = () => {
   const { manaSymbol } = useAppSelector((state) => state.home);
+  const { dataList, isError, isLoading } = useAppSelector(
+    (state) => state.cards
+  );
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
   const [color, setColor] = useState(manaSymbol || 'colorless');
-  const [query, setQuery] = useState('');
-  const { loading, data, error } = useFetch(color, page, query);
+
+  const fetch = useFetch(color);
   const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
@@ -48,23 +51,18 @@ const SearchMtg = () => {
     }
   };
 
-  const handleInputChange = (e: React.FormEvent<EventTarget>): void => {
-    let target = e.target as HTMLInputElement;
-    setQuery(target.value);
-  };
-
   const handleSelectChange = (e: React.FormEvent<EventTarget>): void => {
     let target = e.target as HTMLInputElement;
     setPage(1);
     setColor(target.value);
   };
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error fetching data</h1>;
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error fetching data</h1>;
   return (
     <main className="search background">
       <div className="search-container">
-        <SearchBar query={query} handleChange={handleInputChange} />
+        <SearchBar />
 
         <div className="select-container">
           <div className="search-title">
@@ -97,12 +95,13 @@ const SearchMtg = () => {
               </div>
             );
           })}
-          <div>
+          {/* <div>
             <Button>Advanced Search</Button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="btn-contanier">
+        {dataList.total_cards}
         <Button onClick={prevPage}>Prev</Button>
         <span>{page}</span>
         <Button onClick={nextPage}>Next</Button>
@@ -123,7 +122,7 @@ const SearchMtg = () => {
       </div>
       <div className="grid-contaniner">
         <Grid container spacing={3}>
-          {data?.map((card) => {
+          {dataList.data?.map((card) => {
             return (
               <Grid item key={card.id} xs={12} sm={6} md={4} lg={2}>
                 <Card card={card} handleAddToDeck={handleAddToDeck} />

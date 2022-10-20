@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from './store';
 
 interface HomeState {
   manaSymbol: string;
   isOpenTribes: boolean;
   isOpenAbilities: boolean;
+  searchQuery: string;
+  page: number;
 }
 
 const initialState: HomeState = {
   manaSymbol: '',
   isOpenTribes: false,
   isOpenAbilities: false,
+  searchQuery: '',
+  page: 1,
 };
 
 export const homeSlice = createSlice({
@@ -30,8 +33,11 @@ export const homeSlice = createSlice({
     closeModalAbilities: (state) => {
       state.isOpenAbilities = false;
     },
-    setManaSymbol: (state, action: PayloadAction<string>) => {
-      state.manaSymbol = action.payload;
+    setManaSymbol: (state, { payload }: PayloadAction<string>) => {
+      state.manaSymbol = payload;
+    },
+    setSearchQuery: (state, { payload }: PayloadAction<string>) => {
+      state.searchQuery = payload;
     },
   },
 });
@@ -42,5 +48,6 @@ export const {
   openModalTribes,
   closeModalTribes,
   setManaSymbol,
+  setSearchQuery,
 } = homeSlice.actions;
 export default homeSlice.reducer;

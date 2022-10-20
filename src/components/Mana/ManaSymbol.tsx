@@ -4,6 +4,7 @@ import Swamp from '../../assets/images/Swamp.png';
 import Forest from '../../assets/images/Forest.png';
 import Island from '../../assets/images/Island.png';
 import Plains from '../../assets/images/Plains.png';
+import Colorless from '../../assets/images/Colorless.png';
 import { useAppSelector } from '../../types/hooks';
 
 const ManaSymbol = () => {
@@ -25,6 +26,9 @@ const ManaSymbol = () => {
       )}
       {manaSymbol === 'blue' && (
         <img src={Island} alt="island" className="mana" />
+      )}
+      {manaSymbol === 'colorless' && (
+        <img src={Colorless} alt="colorless" className="mana" />
       )}
     </div>
   );

@@ -3,6 +3,7 @@ import Swamp from '../assets/images/Swamp.png';
 import Forest from '../assets/images/Forest.png';
 import Island from '../assets/images/Island.png';
 import Plains from '../assets/images/Plains.png';
+import Colorless from '../assets/images/Colorless.png';
 
 export const inputs = [
   {
@@ -34,5 +35,11 @@ export const inputs = [
     value: 'black',
     title: 'Black',
     imgSrc: Swamp,
+  },
+  {
+    id: 6,
+    value: 'colorless',
+    title: 'Colorless',
+    imgSrc: Colorless,
   },
 ];
