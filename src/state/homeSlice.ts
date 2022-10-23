@@ -6,15 +6,13 @@ interface HomeState {
   isOpenTribes: boolean;
   isOpenAbilities: boolean;
   searchQuery: string;
-  page: number;
 }
 
 const initialState: HomeState = {
-  manaSymbol: '',
+  manaSymbol: 'colorless',
   isOpenTribes: false,
   isOpenAbilities: false,
   searchQuery: '',
-  page: 1,
 };
 
 export const homeSlice = createSlice({

@@ -7,12 +7,37 @@ import {
   getCardsFailure,
 } from '../state/cardsSlice';
 
-export const useFetch = (color?: string) => {
-  const { searchQuery, page } = useAppSelector((state) => state.home);
-  const { next_page } = useAppSelector((state) => state.cards.dataList);
+export const useFetch = () => {
+  const { searchQuery, manaSymbol } = useAppSelector((state) => state.home);
+  const { dataList } = useAppSelector((state) => state.cards);
   const dispatch = useAppDispatch();
-  const urlSearchByColor = `https://api.scryfall.com/cards/search?q=c%3A${color}`;
+  const urlSearchByColor = `https://api.scryfall.com/cards/search?q=c%3A${manaSymbol}`;
   const urlQuery = `https://api.scryfall.com/cards/search?q=${searchQuery}`;
+  const [page, setPage] = useState(1);
+
+  const { has_more, total_cards, data } = dataList;
+
+  const _lastPage = Math.floor(total_cards / data.length);
+
+  const nextPage = () => {
+    if (has_more) {
+      setPage(page + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const firstPage = () => {
+    setPage(1);
+  };
+
+  const lastPage = () => {
+    setPage(_lastPage + 1);
+  };
 
   const getData = async () => {
     dispatch(getCardsStart());
@@ -47,11 +72,11 @@ export const useFetch = (color?: string) => {
   };
 
   useEffect(() => {
-    if (color) {
+    if (manaSymbol) {
       getData();
     }
     // eslint-disable-next-line
-  }, [page, color]);
+  }, [page, manaSymbol]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,4 +90,6 @@ export const useFetch = (color?: string) => {
     };
     // eslint-disable-next-line
   }, [searchQuery]);
+
+  return { nextPage, prevPage, page, setPage, firstPage, lastPage };
 };

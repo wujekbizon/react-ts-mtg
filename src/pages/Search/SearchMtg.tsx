@@ -4,6 +4,8 @@ import { useAppSelector, useAppDispatch } from '../../types/hooks';
 import { setManaSymbol } from '../../state/homeSlice';
 import { useFetch } from '../../hooks/useFetch';
 import { inputs } from '../../data';
+import LastPageIcon from '@mui/icons-material/LastPage';
+import FirstPageIcon from '@mui/icons-material/FirstPage';
 import {
   Card,
   SearchBar,
@@ -23,47 +25,31 @@ const SearchMtg = () => {
     (state) => state.cards
   );
   const dispatch = useAppDispatch();
-  const [page, setPage] = useState(1);
-  const [color, setColor] = useState(manaSymbol || 'colorless');
-
-  const fetch = useFetch(color);
+  const { page, prevPage, nextPage, setPage, firstPage, lastPage } = useFetch();
   const [cartOpen, setCartOpen] = useState(false);
-
-  useEffect(() => {
-    dispatch(setManaSymbol(color));
-  }, [color, dispatch]);
-
+  const { total_cards, data, has_more } = dataList;
   const handleAddToDeck = (clickedCard: MtgCards) => {};
-
-  const nextPage = () => {
-    if (page >= 29) {
-      setPage(1);
-    } else {
-      setPage(page + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (page <= 1) {
-      setPage(29);
-    } else {
-      setPage(page - 1);
-    }
-  };
 
   const handleSelectChange = (e: React.FormEvent<EventTarget>): void => {
     let target = e.target as HTMLInputElement;
     setPage(1);
-    setColor(target.value);
+    dispatch(setManaSymbol(target.value));
   };
 
-  if (isLoading) return <h1>Loading...</h1>;
-  if (isError) return <h1>Error fetching data</h1>;
+  useEffect(() => {}, []);
+
+  if (isLoading)
+    return (
+      <section className="loading-container">
+        <h1>Loading...</h1>
+      </section>
+    );
+
   return (
     <main className="search background">
       <div className="search-container">
         <SearchBar />
-
+        {isError && <h1>Error fetching data</h1>}
         <div className="select-container">
           <div className="search-title">
             <svg
@@ -81,13 +67,16 @@ const SearchMtg = () => {
           </div>
           {inputs.map((input) => {
             const { id, value, title, imgSrc } = input;
+
             return (
               <div className="input-container" key={id}>
                 <input
                   type="checkbox"
                   value={value}
                   onChange={handleSelectChange}
-                  className={color === value ? 'active-input input' : 'input'}
+                  className={
+                    value === manaSymbol ? 'active-input input' : 'input'
+                  }
                 />
 
                 <img src={imgSrc} alt="mana" />
@@ -100,12 +89,44 @@ const SearchMtg = () => {
           </div> */}
         </div>
       </div>
-      <div className="btn-contanier">
-        {dataList.total_cards}
-        <Button onClick={prevPage}>Prev</Button>
-        <span>{page}</span>
-        <Button onClick={nextPage}>Next</Button>
-      </div>
+      {!isError && (
+        <div className="search-info">
+          {has_more && (
+            <p>
+              <strong>
+                {data.length * page + 1 - data.length} - {data.length * page} of{' '}
+                {total_cards} cards
+              </strong>
+              <span> where the color is {manaSymbol}</span>
+            </p>
+          )}
+          {!has_more && (
+            <p>
+              <strong>
+                {total_cards - data.length + 1} - {total_cards} of {total_cards}{' '}
+                cards
+              </strong>
+              <span> where the color is {manaSymbol}</span>
+            </p>
+          )}
+        </div>
+      )}
+      {!isError && (
+        <div className="btn-contanier">
+          <Button onClick={firstPage} disabled={page === 1}>
+            <FirstPageIcon fontSize="large" />
+          </Button>
+          <Button onClick={prevPage} disabled={page === 1}>
+            {'<'} Previous
+          </Button>
+          <Button onClick={nextPage} disabled={!has_more}>
+            Next {has_more ? data.length : ''} {'>'}
+          </Button>
+          <Button onClick={lastPage} disabled={!has_more}>
+            <LastPageIcon fontSize="large" />
+          </Button>
+        </div>
+      )}
       <div className="drawer">
         <Drawer
           anchor="right"
@@ -121,16 +142,34 @@ const SearchMtg = () => {
         </IconButton>
       </div>
       <div className="grid-contaniner">
-        <Grid container spacing={3}>
-          {dataList.data?.map((card) => {
-            return (
-              <Grid item key={card.id} xs={12} sm={6} md={4} lg={2}>
-                <Card card={card} handleAddToDeck={handleAddToDeck} />
-              </Grid>
-            );
-          })}
-        </Grid>
+        {!isError && (
+          <Grid container spacing={1}>
+            {data?.map((card) => {
+              return (
+                <Grid item key={card.id} xs={12} sm={4} md={3} lg={2}>
+                  <Card card={card} handleAddToDeck={handleAddToDeck} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
       </div>
+      {!isError && data.length > 18 && (
+        <div className="btn-contanier">
+          <Button onClick={firstPage} disabled={page === 1}>
+            <FirstPageIcon fontSize="large" />
+          </Button>
+          <Button onClick={prevPage} disabled={page === 1}>
+            {'<'} Previous
+          </Button>
+          <Button onClick={nextPage} disabled={!has_more}>
+            Next {has_more ? data.length : ''} {'>'}
+          </Button>
+          <Button onClick={lastPage} disabled={!has_more}>
+            <LastPageIcon fontSize="large" />
+          </Button>
+        </div>
+      )}
     </main>
   );
 };

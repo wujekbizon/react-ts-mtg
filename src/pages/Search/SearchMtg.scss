@@ -31,7 +31,7 @@
       .input-container {
         display: flex;
         align-items: center;
-        margin-left: 20px;
+        margin-left: 10px;
 
         .active-input:checked::after {
           background: linear-gradient(
@@ -118,8 +118,35 @@
   .btn-contanier {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-bottom: 30px;
+    margin-top: 20px;
+
+    button {
+      margin-right: 6px;
+      background-color: #f9f7f5;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(67, 30, 63, 1) 0%,
+          rgba(29, 28, 37, 1) 100%
+        );
+        color: white;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        user-select: none;
+
+        &:hover {
+          color: rgba(0, 0, 0, 0.25);
+          background: #f5f6f7;
+        }
+      }
+    }
 
     span {
       display: flex;
@@ -136,7 +163,7 @@
       position: absolute;
       z-index: 100;
       right: 0;
-      top: -200px;
+      top: -300px;
     }
   }
 

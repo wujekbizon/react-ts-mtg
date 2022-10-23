@@ -6,8 +6,21 @@ export interface Data {
   total_cards: number;
 }
 
+type CardFaceItem = {
+  image_uris: {
+    art_crop: string;
+    border_crop: string;
+    large: string;
+    normal: string;
+    png: string;
+    small: string;
+  };
+  name: string;
+};
+
 export type MtgCards = {
   artist: string;
+  card_faces: CardFaceItem[];
   cmc: number;
   color_identity: string[];
   colors: string[];

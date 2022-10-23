@@ -28,6 +28,7 @@ export const cardsSlice = createSlice({
   reducers: {
     getCardsStart: (state) => {
       state.isLoading = true;
+      state.isError = false;
     },
     getCardsSuccess: (state, { payload }: PayloadAction<Data>) => {
       state.isLoading = false;
