@@ -53,7 +53,7 @@ const Card: React.FC<Props> = ({ card, handleAddToDeck }) => {
           </div>
         )}
       </div>
-      <Button className="button " onClick={() => handleAddToDeck(card)}>
+      <Button className="button" onClick={() => handleAddToDeck(card)}>
         Add to Collection
       </Button>
     </Wrapper>
